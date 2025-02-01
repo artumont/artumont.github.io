@@ -16,3 +16,34 @@ body {
     transform: translate(-50%, -50%);
     object-fit: cover;
 }
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.panel-main {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 300px;
+    border: 1px gray solid;
+    width: calc(100% - 30vw);
+    height: calc(100% - 30vh);
+}
+
+.panel-notification {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    border: 1px gray solid;
+    width: auto;
+    height: auto;
+    position: fixed;
+}
