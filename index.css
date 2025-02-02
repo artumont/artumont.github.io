@@ -150,14 +150,14 @@ body {
 
 @media screen and (max-width: 600px) {
     .profile-container .text-container h1 {
-        font-size: 1.35em;
+        font-size: 1.30em;
         font-weight: 400;
         margin: 0;
         font-family: 'PixelOperator';
     }
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 411px) {
     .profile-container .text-container h1 {
         font-size: 1.0em;
         font-weight: 400;
