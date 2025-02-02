@@ -49,6 +49,13 @@ body {
     transform-style: preserve-3d;
 }
 
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
 /* ?Desktop? */
 @media screen and (min-width: 900px) {
     .panel-main .profile-container {
@@ -67,15 +74,36 @@ body {
         height: auto;
         border-radius: 20px;
     }
+
+    .profile-container .text-container {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    
+    .profile-container .text-container h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        margin: 0;
+        font-family: 'PixelOperator';
+    }
+
+    .profile-container .text-container h2 {
+        font-size: 1.0em;
+        font-weight: 300;
+        margin: 0;
+        font-family: 'PixelOperator';
+    }
 }
 
 /* ?Mobile? */
 @media screen and (max-width: 900px) {
     .panel-main .profile-container {
         display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
         padding: 10px;
         width: 100%;
         height: 200px;
@@ -87,6 +115,28 @@ body {
         width: auto;
         height: 100%;
         border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    .profile-container .text-container {
+        width: auto;
+        height: auto;
+        text-align: start;
+        padding: 10px;
+    }
+    
+    .profile-container .text-container h1 {
+        font-size: 1.5em;
+        font-weight: 400;
+        margin: 0;
+        font-family: 'PixelOperator';
+    }
+
+    .profile-container .text-container h2 {
+        font-size: 1.0em;
+        font-weight: 300;
+        margin: 0;
+        font-family: 'PixelOperator';
     }
 }
 
