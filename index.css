@@ -230,6 +230,10 @@ body {
         font-family: 'PixelOperator';
     }
 
+    .profile-container .content-container {
+        flex-direction: column;
+    }
+
     .button {
         margin-right: 2px;
         width: 100%;
@@ -249,10 +253,6 @@ body {
         font-weight: 300;
         margin: 0;
         font-family: 'PixelOperator';
-    }
-
-    .profile-container .content-container {
-        flex-direction: column;
     }
 
     .button {
