@@ -36,29 +36,40 @@ function performAnimation() {
 }
 
 function openWindow(string) {
-    window.open("https://" + string, '_blank');
+    if (!string || typeof string !== 'string') return;
+    
+    if (!string.startsWith("mailto")) {
+        window.open("https://" + string, '_blank');
+    } else {
+        window.open(string, '_blank');
+    }
+}
+
+function scrollArrowAnimation() {
+    const scrollableContainers = document.querySelectorAll('.content-scrollable');
+    scrollableContainers.forEach(container => {
+        const scrollArrow = container.querySelector('.scroll-arrow');
+        
+        if (scrollArrow) {
+            container.addEventListener('scroll', () => {
+                const isAtBottom = 
+                    container.scrollHeight - container.scrollTop <= container.clientHeight + 1;
+                
+                if (isAtBottom) {
+                    scrollArrow.style.visibility = 'hidden';
+                } else {
+                    scrollArrow.style.visibility = 'visible';
+                }
+            });
+        } else {
+            console.warn('Scroll arrow not found for container:', container);
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('bg-video').playbackRate = 0.75;
     document.getElementById('pfp-video').playbackRate = 0.75;
     performAnimation();
-
-    const techStack = document.getElementById('tech-stack');
-    const scrollArrow = document.querySelector('.scroll-arrow');
-
-    if (techStack && scrollArrow) {
-        techStack.addEventListener('scroll', () => {
-            const isAtBottom = 
-                techStack.scrollHeight - techStack.scrollTop <= techStack.clientHeight + 1;
-            
-            if (isAtBottom) {
-                scrollArrow.style.opacity = 0;
-            } else {
-                scrollArrow.style.opacity = 1;
-            }
-        });
-    } else {
-        console.warn('Tech stack or scroll arrow elements not found');
-    }
+    scrollArrowAnimation();
 });
