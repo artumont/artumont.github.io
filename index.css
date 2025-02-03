@@ -81,8 +81,8 @@ body {
         animation: bounce 1s infinite;
     }
     
-    .profile-container .content-container:hover::after {
-        opacity: 1;
+    .profile-container .content-container.scrolled::after {
+        display: none;
     }
 
     .button {

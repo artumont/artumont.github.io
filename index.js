@@ -44,3 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('pfp-video').playbackRate = 0.75;
     performAnimation();
 });
+
+const container = document.getElementById('tech-stack');
+
+container.addEventListener('scroll', () => {
+    if (container.scrollTop > 20) {
+        container.classList.add('scrolled');
+    } else {
+        container.classList.remove('scrolled');
+    }
+});
