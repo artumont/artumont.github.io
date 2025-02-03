@@ -43,14 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('bg-video').playbackRate = 0.75;
     document.getElementById('pfp-video').playbackRate = 0.75;
     performAnimation();
-});
 
-const container = document.getElementById('tech-stack');
+    const techStack = document.getElementById('tech-stack');
+    const scrollArrow = document.querySelector('.scroll-arrow');
 
-container.addEventListener('scroll', () => {
-    if (container.scrollTop > 20) {
-        container.classList.add('scrolled');
+    if (techStack && scrollArrow) {
+        techStack.addEventListener('scroll', () => {
+            const isAtBottom = 
+                techStack.scrollHeight - techStack.scrollTop <= techStack.clientHeight + 1;
+            
+            if (isAtBottom) {
+                scrollArrow.style.opacity = 0;
+            } else {
+                scrollArrow.style.opacity = 1;
+            }
+        });
     } else {
-        container.classList.remove('scrolled');
+        console.warn('Tech stack or scroll arrow elements not found');
     }
 });

@@ -66,24 +66,6 @@ body {
         scrollbar-width: none;
         position: relative;
     }
-    
-    .profile-container .content-container::after {
-        content: '↓';
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: rgb(255, 255, 255);
-        font-size: 20px;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        animation: bounce 1s infinite;
-    }
-    
-    .profile-container .content-container.scrolled::after {
-        display: none;
-    }
 
     .button {
         padding: 5px 5px;
@@ -110,6 +92,28 @@ body {
         font-weight: 300;
         font-family: 'PixelOperator';
     }
+
+    .scroll-arrow {
+        display: block;
+        opacity: 0;
+        width: 20px;
+        height: 20px;
+        background-color: rgba(0, 0, 0, 0.801);
+        border-radius: 100%;
+    }
+
+
+    #tech-stack:hover {
+        .scroll-arrow {
+            opacity: 1;
+            position: sticky;
+            bottom: 0;
+            left: 45%;
+            transform: translateX(-50%);
+            animation: bounce 1s infinite;
+        }
+    }
+
 }
 
 /* ?Desktop? */
@@ -305,10 +309,10 @@ body {
 
 @keyframes bounce {
     0%, 100% {
-        bottom: 10px;
+        transform: translateY(0);
     }
     50% {
-        bottom: 15px;
+        transform: translateY(-10px);
     }
 }
 
