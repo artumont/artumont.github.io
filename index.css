@@ -131,6 +131,10 @@ body {
         padding: 10px;
         box-sizing: border-box;
     }
+
+    .button {
+        margin: 2px 0;
+    }
 }
 
 /* ?Normal Mobile / Tablets? */
@@ -190,7 +194,7 @@ body {
 
     .profile-container .content-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: start;
         justify-content: start;
         width: 100%;
@@ -200,6 +204,11 @@ body {
         box-sizing: border-box;
         overflow-y: scroll;
         scrollbar-width: none;
+    }
+
+    .button {
+        margin: 2px 2px;
+        width: 30%;
     }
 }
 
@@ -220,6 +229,11 @@ body {
         margin: 0;
         font-family: 'PixelOperator';
     }
+
+    .button {
+        margin-right: 2px;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -229,11 +243,16 @@ body {
         margin: 0;
         font-family: 'PixelOperator';
     }
+    
     .profile-container .text-container h2 {
         font-size: 0.7em;
         font-weight: 300;
         margin: 0;
         font-family: 'PixelOperator';
+    }
+
+    .profile-container .content-container {
+        flex-direction: column;
     }
 
     .button {
