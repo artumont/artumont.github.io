@@ -7,7 +7,7 @@
     color: white;
     width: 300px;
     border: 4px var(--border-color) dashed;
-    width: calc(100% - 20vw);
-    height: calc(100% - 20vh);
+    width: calc(100% - 10vw);
+    height: calc(100% - 15vh);
     transform-style: preserve-3d;
 }
