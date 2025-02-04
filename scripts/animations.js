@@ -1,5 +1,5 @@
 function panelPerspective() {
-    const panel = document.querySelector('.panel-main');
+    const panel = document.getElementById('perspective-animation');
     const MAX_ROTATION = 5;
     
     panel.style.transition = 'transform 0.45s ease-out';

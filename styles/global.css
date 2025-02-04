@@ -24,7 +24,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     cursor: var(--custom-cursor);
 }
 
@@ -40,7 +40,7 @@ body {
     object-fit: cover;
 }
 
-.main-content {
+.primary-container {
     display: flex;
     position: fixed;
     top: 0;
