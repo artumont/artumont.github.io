@@ -1,4 +1,4 @@
-function performAnimation() {
+function panelPerspective() {
     const panel = document.querySelector('.panel-main');
     const MAX_ROTATION = 5;
     
@@ -35,41 +35,7 @@ function performAnimation() {
     });
 }
 
-function openWindow(string) {
-    if (!string || typeof string !== 'string') return;
-    
-    if (!string.startsWith("mailto")) {
-        window.open("https://" + string, '_blank');
-    } else {
-        window.open(string, '_blank');
-    }
-}
-
-function scrollArrowAnimation() {
-    const scrollableContainers = document.querySelectorAll('.content-scrollable');
-    scrollableContainers.forEach(container => {
-        const scrollArrow = container.querySelector('.scroll-arrow');
-        
-        if (scrollArrow) {
-            container.addEventListener('scroll', () => {
-                const isAtBottom = 
-                    container.scrollHeight - container.scrollTop <= container.clientHeight + 1;
-                
-                if (isAtBottom) {
-                    scrollArrow.style.visibility = 'hidden';
-                } else {
-                    scrollArrow.style.visibility = 'visible';
-                }
-            });
-        } else {
-            console.warn('Scroll arrow not found for container:', container);
-        }
-    });
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('bg-video').playbackRate = 0.75;
-    document.getElementById('pfp-video').playbackRate = 0.75;
-    performAnimation();
-    scrollArrowAnimation();
+    panelPerspective();
 });

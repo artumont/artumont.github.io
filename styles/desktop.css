@@ -1,0 +1,13 @@
+@import url('global.css');
+
+.panel-main {
+    background-color: var(--panel-color);
+    border-radius: 3px;
+    text-align: center;
+    color: white;
+    width: 300px;
+    border: 4px var(--border-color) dashed;
+    width: calc(100% - 20vw);
+    height: calc(100% - 20vh);
+    transform-style: preserve-3d;
+}
