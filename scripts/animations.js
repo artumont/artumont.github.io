@@ -37,5 +37,6 @@ function panelPerspective() {
 
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('bg-video').playbackRate = 0.75;
+    document.getElementById('pfp-video').playbackRate = 0.75;
     panelPerspective();
 });

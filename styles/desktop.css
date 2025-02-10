@@ -5,25 +5,69 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: calc(100% - 300px);
-    height: calc(100% - 200px);
+    width: calc(100% - 150px);
+    height: calc(100% - 100px);
     transform-style: preserve-3d;
 }
 
 .info-panel {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 25%;
     height: 100%;
     background-color: var(--panel-color);
     border: 3px dashed var(--border-color);
     border-radius: 10px;
-    padding: 10px;
     margin-right: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
+
+.info-panel .profile-picture {
+    width: calc(100% - 30px);
+    margin: 15px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5%;  
+    box-sizing: border-box;
+}
+
+.info-panel .text-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    color: white;
+}
+
+.info-panel .text-container h1 {
+    font-family: PixelOperator;
+    font-size: 1.5em;
+    font-weight: 100; 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.info-panel .text-container h2 {
+    font-family: PixelOperator;
+    font-size: 1.2em;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.info-panel .text-container p {
+    font-family: PixelOperator;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
 
 .content-panel {
     display: flex;
@@ -35,6 +79,5 @@
     background-color: var(--panel-color);
     border: 3px dashed var(--border-color);
     border-radius: 10px;
-    padding: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
