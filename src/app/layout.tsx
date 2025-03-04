@@ -35,8 +35,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${pixelOperator.className} antialiased`}
-			>
+				className={`antialiased`}
+			>   
 				{children}
 			</body>
 		</html>
