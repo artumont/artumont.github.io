@@ -1,5 +1,7 @@
 export default function Header() {
     return (
-        null
+        <section className="w-full">
+            
+        </section>
     );
 }
