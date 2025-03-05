@@ -25,9 +25,25 @@ export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false)
 
     const menuVariants = {
-        hidden: { opacity: 0, x: "100%" },
-        visible: { opacity: 1, x: 0 },
-        exit: { opacity: 0, x: "100%" }
+        hidden: { opacity: 0, x: "100%", scale: 0.95 },
+        visible: { 
+            opacity: 1, 
+            x: 0, 
+            scale: 1,
+            transition: {
+                duration: 0.3,
+                ease: [0.4, 0, 0.2, 1]
+            }
+        },
+        exit: { 
+            opacity: 0, 
+            x: "100%", 
+            scale: 0.95,
+            transition: {
+                duration: 0.2,
+                ease: [0.4, 0, 1, 1]
+            }
+        }
     }
 
     const DesktopMenu = () => (
@@ -59,10 +75,16 @@ export default function NavBar() {
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
             >
-                <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                >
+                    <motion.div
+                        animate={{ 
+                            rotate: isOpen ? 180 : 0,
+                            scale: isOpen ? 1.1 : 1
+                        }}
+                        transition={{ 
+                            duration: 0.2,
+                            ease: "easeInOut"
+                        }}
+                    >
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </motion.div>
             </button>
@@ -75,10 +97,14 @@ export default function NavBar() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
+                            transition={{
+                                duration: 0.2,
+                                ease: "easeInOut"
+                            }}
                             onClick={() => setIsOpen(false)}
                         />
                         <motion.div
-                            className="fixed top-16 right-0 h-screen w-72 bg-zinc-900/95 backdrop-blur-sm p-6 shadow-xl"
+                            className="fixed top-16 right-0 h-screen w-screen backdrop-blur-sm p-6 shadow-xl"
                             variants={menuVariants}
                             initial="hidden"
                             animate="visible"
@@ -101,10 +127,22 @@ export default function NavBar() {
                                 {['home', 'about', 'projects', 'contact'].map((item) => (
                                     <motion.li
                                         key={item}
-                                        variants={{
-                                            open: { x: 0, opacity: 1 },
-                                            closed: { x: 50, opacity: 0 }
-                                        }}
+                            variants={{
+                                open: { 
+                                    x: 0, 
+                                    opacity: 1,
+                                    scale: 1,
+                                    transition: {
+                                        duration: 0.3,
+                                        ease: [0.4, 0, 0.2, 1]
+                                    }
+                                },
+                                closed: { 
+                                    x: 50, 
+                                    opacity: 0,
+                                    scale: 0.95
+                                }
+                            }}
                                     >
                                         <a 
                                             href={`#${item}`}
@@ -124,20 +162,18 @@ export default function NavBar() {
     )
 
     return (
-        <nav 
+        <motion.nav 
             className="fixed inset-x-0 top-0 flex justify-between items-center px-6 md:px-32 py-4 text-white font-inert z-50"
             role="navigation"
             aria-label="Main navigation"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
         >
-            <motion.h1 
-                className="text-2xl font-jetbrains font-bold cursor-pointer hover:text-zinc-300 transition-colors"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
+            <h1 className="text-2xl font-jetbrains font-bold cursor-pointer hover:text-zinc-300 transition-colors">
                 <a href="#home">Artu</a>
-            </motion.h1>
+            </h1>
             {useIsMobile() ? <MobileMenu /> : <DesktopMenu />}
-        </nav>
+        </motion.nav>
     )
 }

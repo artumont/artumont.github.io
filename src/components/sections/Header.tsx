@@ -1,4 +1,5 @@
 import TerminalText from '../ui/TerminalText';
+import { motion } from 'motion/react'
 
 export default function Header() {
     return (
@@ -12,7 +13,12 @@ export default function Header() {
             </div>
 
             {/* Content */}
-            <div className="flex flex-col items-center justify-center h-full">
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4}} 
+                className="flex flex-col items-center justify-center h-full"
+            >
                 <div className='text-center w-auto max-w-3xl mx-auto'>    
                     <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight relative">
                         Fullstack Developer
@@ -26,7 +32,7 @@ export default function Header() {
                         delay={40}
                     />
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }
