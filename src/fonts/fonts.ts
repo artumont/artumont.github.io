@@ -12,6 +12,7 @@ export const inter = Inter({
     subsets: ["latin"],
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 })
+
 export const jetBrainsMono = JetBrains_Mono({
     variable: "--font-jetbrains",
     subsets: ["latin"],

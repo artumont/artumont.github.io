@@ -6,3 +6,7 @@
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
+
+.text-gradient {
+    @apply bg-gradient-to-r from-[#e2e2e2] to-[#8c8c8c] bg-clip-text text-transparent;
+}
