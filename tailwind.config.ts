@@ -13,7 +13,12 @@ const config: Config = {
         primary: '#070707',
         secondary: '#141414',
         accent: '#cccccc',
-      }
+      },
+      fontFamily: {
+        inter: ['var(--font-inter)'],
+        jetbrains: ['var(--font-jetbrains)'],
+        pixel: ['var(--font-pixel-operator)'],
+      },
     },
   },
   plugins: [],
