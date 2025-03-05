@@ -40,13 +40,14 @@ export default function Header() {
                                  text-white rounded-lg transition-all duration-300 border border-accent/50"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 1.00 }}
-                        transition={{ duration: 0.01 }}
+                        transition={{ duration: 0.02 }}
                     >
                         <Download size={20} />
                         <span className="font-jetbrains">Download CV</span>
                     </motion.a>
                 </div>
             </motion.div>
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/40 to-transparent"></div>
         </section>
     );
 }
