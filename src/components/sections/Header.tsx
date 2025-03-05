@@ -1,9 +1,11 @@
 import TerminalText from '../ui/TerminalText';
 import { motion } from 'motion/react'
+import { Download } from 'lucide-react'
 
 export default function Header() {
     return (
         <section className="w-full h-[100vh] home">
+            
             {/* Background design */}
             <div className="container relative">
                 <div className="fixed top-0 right-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
@@ -24,13 +26,25 @@ export default function Header() {
                         Fullstack Developer
                     </h1>
                     <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient font-jetbrains">
-                        Linux Enthusiast   
+                        Linux Enthusiast
                     </h2>
                     <TerminalText
                         text="I'm a full stack developer with a passion for back-end development and computer vision projects." 
                         className="text-xl lg:max-w-[100%] mt-2 font-jetbrains text-center mx-auto" 
                         delay={40}
                     />
+                    <motion.a
+                        href="/" // @todo: Add link to CV
+                        download
+                        className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-accent/20 hover:bg-accent/30 
+                                 text-white rounded-lg transition-all duration-300 border border-accent/50"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 1.00 }}
+                        transition={{ duration: 0.01 }}
+                    >
+                        <Download size={20} />
+                        <span className="font-jetbrains">Download CV</span>
+                    </motion.a>
                 </div>
             </motion.div>
         </section>
