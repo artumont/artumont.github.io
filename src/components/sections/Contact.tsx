@@ -1,10 +1,10 @@
-export default function Projects() {
+export default function Contact() {
     return (
-        <section className="w-full h-[100vh]" id="projects">
+        <section className="w-full h-[100vh]" id="contact">
             {/* Content & Background */}
             <div className='relative min-h-screen w-full bg-primary px-5 pt-8 lg:px-32 lg:pt-12'>
                 <div className='container'>
-                    <h1 className='text-4xl font-jetbrains mb-1'> Projects </h1>
+                    <h1 className='text-4xl font-jetbrains mb-1'> Contact </h1>
                     <div className='h-1 w-40 bg-gradient-to-r from-accent to-accent/30'></div>
                 </div>
                 <div className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'>
