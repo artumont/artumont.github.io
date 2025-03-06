@@ -53,7 +53,7 @@ export default function About() {
         { name: 'Team Player'},
         { name: 'Self Learner'},
         { name: 'Detail-Oriented'},
-        { name: 'Passionate'}
+        { name: 'Passionate'},
     ];
 
     return (
@@ -78,7 +78,7 @@ export default function About() {
                                 alt='Artu'
                                 width={190}
                                 height={190}
-                                className='rounded-full border-4 border-accent/50'
+                                className='rounded-full border-4 border-accent/50 mb-2 lg:mb-0'
                             />
                             <div className='flex text-center lg:text-start flex-col lg:ml-5'>
                                 <h1 className='text-2xl font-jetbrains'> Artu (@artumont) </h1>
@@ -104,7 +104,7 @@ export default function About() {
                                 I mainly specialize in backend development, but I also have experience in frontend development and cloud infrastructure. I have worked on a variety of projects, from web applications to REST APIs and even some computer vision stuff.
                             </p>
                         </div>
-                        <div className='flex flex-col lg:flex-row mt-2'>
+                        <div className='flex flex-col mt-2'>
                             {myTraits.map((trait, index) => (
                                 <div key={index} className='rounded-lg bg-terciary p-2 text-center gap-1 m-1'>
                                     <span className='text-sm font-inter font-medium'>{trait.name}</span>
@@ -118,7 +118,7 @@ export default function About() {
                         <h1 className='text-xl font-jetbrains mb-1 text-center'>Technical Expertise</h1>
                         <div className='h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30'></div>
                         <div className='flex flex-col h-full w-full mt-6'>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col items-center lg:items-start'>
                                 <div className='flex flex-row'>
                                     <PanelsTopLeft />
                                     <h1 className='text-lg font-jetbrains mb-1 ml-2'>Frontend</h1>
@@ -138,7 +138,7 @@ export default function About() {
                                     ))}
                                 </div>
                             </div>
-                            <div className='flex flex-col mt-6'>
+                            <div className='flex flex-col mt-6 items-center lg:items-start'>
                                 <div className='flex flex-row'>
                                     <Server />
                                     <h1 className='text-lg font-jetbrains mb-1 ml-2'>Backend</h1>
@@ -158,7 +158,7 @@ export default function About() {
                                     ))}
                                 </div>
                             </div>
-                            <div className='flex flex-col mt-6'>
+                            <div className='flex flex-col mt-6 items-center lg:items-start'>
                                 <div className='flex flex-row'>
                                     <Cloud />
                                     <h1 className='text-lg font-jetbrains mb-1 ml-2'>Platform & DevOps</h1>
@@ -178,7 +178,7 @@ export default function About() {
                                     ))}
                                 </div>
                             </div>
-                            <div className='flex flex-col mt-6'>
+                            <div className='flex flex-col mt-6 items-center lg:items-start'>
                                 <div className='flex flex-row'>
                                     <Code2 />
                                     <h1 className='text-lg font-jetbrains mb-1 ml-2'>Languages</h1>
