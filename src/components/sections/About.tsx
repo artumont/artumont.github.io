@@ -59,14 +59,14 @@ export default function About() {
     return (
         <section className="w-full h-[100vh]" id='about'>
             {/* Content & Background */}
-            <div className='relative min-h-screen w-full bg-primary px-22 pt-8 lg:px-32 lg:pt-12'>
+            <div className='relative min-h-screen w-full bg-primary px-5 pt-8 lg:px-32 lg:pt-12'>
                 <div className='container'>
                     <h1 className='text-4xl font-jetbrains mb-1'> About Me </h1>
                     <div className='h-1 w-40 bg-gradient-to-r from-accent to-accent/30'></div>
                 </div>
-                <div className='flex flex-row min-h-[100%] justify-between'>
+                <div className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'>
                     {/* Profile */}
-                    <div className='flex flex-col max-w-[50%] bg-secondary mt-10 rounded-lg p-5 mr-5'>
+                    <div className='flex flex-col lg:max-w-[50%] bg-secondary mt-10 rounded-lg p-5 mx-5 lg:mx-0 lg:mr-5'>
                         <div className='flex flex-col lg:flex-row items-center lg:mb-3'>
                             <Image 
                                 src='https://avatars.githubusercontent.com/u/197291181?v=4'
@@ -109,7 +109,7 @@ export default function About() {
                     </div>
 
                     {/* Techstack */}
-                    <div className='flex flex-col min-w-[47%] bg-secondary mt-10 rounded-lg p-5 items-center'>
+                    <div className='flex flex-col min-w-[47%] bg-secondary mt-10 rounded-lg p-5 items-center mx-5 lg:mx-0'>
                         <h1 className='text-xl font-jetbrains mb-1 text-center'>Technical Expertise</h1>
                         <div className='h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30'></div>
                         <div className='flex flex-col h-full w-full mt-6'>
