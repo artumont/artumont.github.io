@@ -64,7 +64,12 @@ export default function About() {
                     <h1 className='text-4xl font-jetbrains mb-1'> About Me </h1>
                     <div className='h-1 w-40 bg-gradient-to-r from-accent to-accent/30'></div>
                 </div>
-                <div className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'>
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8}}  
+                    className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'
+                >
                     {/* Profile */}
                     <div className='flex flex-col lg:max-w-[50%] bg-secondary mt-10 rounded-lg p-5 mx-5 lg:mx-0 lg:mr-5'>
                         <div className='flex flex-col lg:flex-row items-center lg:mb-3'>
@@ -195,7 +200,7 @@ export default function About() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/40 to-transparent"></div>
             </div>
         </section>
