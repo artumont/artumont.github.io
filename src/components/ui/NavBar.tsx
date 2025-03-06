@@ -9,7 +9,7 @@ const useIsMobile = () => {
 
     useEffect(() => {
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768)
+            setIsMobile(window.innerWidth <= 768)
         }
         
         checkMobile()
@@ -23,6 +23,16 @@ const useIsMobile = () => {
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20)
+        }
+
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
 
     const menuVariants = {
         hidden: { opacity: 0, x: "100%", scale: 0.95 },
@@ -47,11 +57,8 @@ export default function NavBar() {
     }
 
     const DesktopMenu = () => (
-        <motion.ul 
+        <ul 
             className="flex text-lg space-x-10 justify-end font-normal"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
         >
             {['home', 'about', 'projects', 'contact'].map((item) => (
                 <li key={item}>
@@ -64,7 +71,7 @@ export default function NavBar() {
                     </a>
                 </li>
             ))}
-        </motion.ul>
+        </ul>
     )
 
     const MobileMenu = () => (
@@ -162,18 +169,15 @@ export default function NavBar() {
     )
 
     return (
-        <motion.nav 
-            className="fixed inset-x-0 top-0 flex justify-between items-center px-6 md:px-32 py-4 text-white font-inert z-50"
+        <nav 
+            className={`fixed inset-x-0 top-0 flex justify-between items-center px-6 md:px-26 lg:px-32 py-4 text-white font-inert z-50 transition-all duration-300 ${scrolled ? 'bg-primary/50 backdrop-blur-md shadow-lg' : ''}`}
             role="navigation"
             aria-label="Main navigation"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
         >
             <h1 className="text-2xl font-jetbrains font-bold cursor-pointer hover:text-zinc-300 transition-colors">
                 <a href="#home">Artu</a>
             </h1>
             {useIsMobile() ? <MobileMenu /> : <DesktopMenu />}
-        </motion.nav>
+        </nav>
     )
 }

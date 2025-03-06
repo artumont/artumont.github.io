@@ -4,8 +4,7 @@ import { Download } from 'lucide-react'
 
 export default function Header() {
     return (
-        <section className="w-full h-[100vh] home">
-            
+        <section className="w-full h-[100vh]" id='home'>
             {/* Background design */}
             <div className="container relative">
                 <div className="fixed top-0 right-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
@@ -22,15 +21,15 @@ export default function Header() {
                 className="flex flex-col items-center justify-center h-full"
             >
                 <div className='text-center w-auto max-w-3xl mx-auto'>    
-                    <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight relative">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 lg:mb-3 tracking-tight relative">
                         Fullstack Developer
                     </h1>
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient font-jetbrains">
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient font-jetbrains">
                         Linux Enthusiast
                     </h2>
                     <TerminalText
-                        text="I'm a full stack developer with a passion for back-end development and computer vision projects." 
-                        className="text-xl lg:max-w-[100%] mt-2 font-jetbrains text-center mx-auto" 
+                        text="I'm a full stack developer with a passion for backend development, linux enviroments and computer vision projects." 
+                        className="text-lg lg:text-xl lg:max-w-[100%] mt-2 font-jetbrains text-center mx-auto" 
                         delay={40}
                     />
                     <motion.a
