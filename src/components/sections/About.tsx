@@ -67,7 +67,7 @@ export default function About() {
                 <div className='flex flex-row min-h-[100%] justify-between'>
                     {/* Profile */}
                     <div className='flex flex-col max-w-[50%] bg-secondary mt-10 rounded-lg p-5 mr-5'>
-                        <div className='flex flex-col lg:flex-row items-center'>
+                        <div className='flex flex-col lg:flex-row items-center lg:mb-3'>
                             <Image 
                                 src='https://avatars.githubusercontent.com/u/197291181?v=4'
                                 alt='Artu'
@@ -102,7 +102,7 @@ export default function About() {
                         <div className='flex flex-col lg:flex-row mt-2'>
                             {myTraits.map((trait, index) => (
                                 <div key={index} className='rounded-lg bg-terciary p-2 text-center gap-1 m-1'>
-                                    <span className='text-sm font-inter'>{trait.name}</span>
+                                    <span className='text-sm font-inter font-medium'>{trait.name}</span>
                                 </div>
                             ))}
                         </div>
