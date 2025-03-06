@@ -57,9 +57,9 @@ export default function About() {
     ];
 
     return (
-        <section className="w-full h-[100vh]" id='about'>
+        <section className="w-full min-h-[100vh]" id='about'>
             {/* Content & Background */}
-            <div className='relative min-h-screen w-full bg-primary px-5 pt-8 lg:px-32 lg:pt-12'>
+            <div className='relative min-h-screen w-full bg-primary px-5 py-8 lg:px-32 lg:pt-12'>
                 <div className='container'>
                     <h1 className='text-4xl font-jetbrains mb-1'> About Me </h1>
                     <div className='h-1 w-40 bg-gradient-to-r from-accent to-accent/30'></div>
