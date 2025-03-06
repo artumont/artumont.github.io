@@ -5,8 +5,6 @@ export default function About() {
 
     const frontendTechstack = [
         { name: 'Next.js', class: 'brightness-100 invert', logo: '/logos/nextjs.svg' },
-        { name: 'TypeScript', class: 'brightness-100 invert', logo: '/logos/typescript.svg' },
-        { name: 'Javascript', class: 'brightness-100 invert', logo: '/logos/javascript.svg' },
         { name: 'TailwindCSS', class: 'brightness-100 invert', logo: '/logos/tailwindcss.svg' },
     ];
 
