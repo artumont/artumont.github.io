@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Loading from "../ui/Loading";
 import { motion } from "motion/react";
 import { Code2, Github, ExternalLink, Star } from "lucide-react";
+import Image from "next/image";
 
 interface GitHubRepo {
   id: number;
@@ -13,6 +14,7 @@ interface GitHubRepo {
   stargazers_count: number;
   language: string | null;
   fork: boolean;
+  social_preview_url?: string;
 }
 
 export default function Projects() {
@@ -21,6 +23,17 @@ export default function Projects() {
     const [error, setError] = useState<string | null>(null);
 
     const excludeRepos = ['artumont', 'artumont.github.io'];
+
+    const repoImages: Record<string, string> = {
+        pcbuilder: 'https://repository-images.githubusercontent.com/925452048/49639ebd-6519-4d56-9571-86391dca02c4',
+        techstackbuilder: 'https://repository-images.githubusercontent.com/930977554/d7d514dc-b3a5-4dcd-a166-b50acdc64891',
+        vacationmanager: 'https://repository-images.githubusercontent.com/944007151/d8e9476e-7b21-4860-acd4-a1e1ab6b1c98',
+        seleniumtests: 'https://repository-images.githubusercontent.com/935142131/a163b6ac-a82f-42cb-a79a-0148f92eece6'
+    };
+
+    function buildPreviewImage(name: string) {
+        return `https://opengraph.githubassets.com/1/artumont/${name}`;
+    }
 
     useEffect(() => {
         const getRepos = async () => {
@@ -39,6 +52,10 @@ export default function Projects() {
                     .sort((a: GitHubRepo, b: GitHubRepo) => 
                         b.stargazers_count - a.stargazers_count)
                     .filter((repo: GitHubRepo) => !excludeRepos.includes(repo.name));
+
+                for (const repo of filteredRepos) {
+                    repo.social_preview_url = repoImages[repo.name.toLowerCase()] || buildPreviewImage(repo.name);
+                }
                 
                 setRepos(filteredRepos);
                 setError(null);
@@ -73,11 +90,25 @@ export default function Projects() {
                         className="w-full lg:w-[31%] mb-6 bg-secondary rounded-lg p-5 lg:m-4 flex flex-col"
                     >
                         <div className="flex-grow">
+                            {/* Project Image */}
+                            <div className="relative h-40 lg:h-56 mb-4">
+                                <Image 
+                                    src={repo.social_preview_url || '/default-preview.png'}
+                                    alt={`${repo.name} preview`}
+                                    fill
+                                    priority={true}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    className="rounded-lg object-cover"
+                                />
+                            </div>
+
+                            {/* Project Title & Description */}
                             <h3 className="text-xl font-jetbrains mb-3">{repo.name}</h3>
                             <p className="text-accent mb-4 font-inter">
                                 {repo.description || 'No description provided.'}
                             </p>
                             
+                            {/* Project Metadata */}
                             <div className="flex">
                                 {repo.language && (
                                     <div className="flex items-center gap-2 mb-3">
@@ -90,7 +121,8 @@ export default function Projects() {
                                     <span className="text-sm font-inter">{repo.stargazers_count}</span>
                                 </div>
                             </div>
-                            
+                                
+                            {/* Project Topics */}
                             {repo.topics && repo.topics.length > 0 && (
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {repo.topics.map(topic => (
