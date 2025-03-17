@@ -1,9 +1,9 @@
 'use client'
 
 import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
 import Header from "@/components/sections/Header";
 import Projects from "@/components/sections/Projects";
+import Footer from "@/components/sections/Footer";
 import NavBar from "@/components/ui/NavBar";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
             <Header />
             <About />
             <Projects />
-            <Contact />
+            <Footer />
         </main>
     );
 }
