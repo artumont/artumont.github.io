@@ -47,7 +47,7 @@ export default function About() {
     const profileButtons = [
         { name: 'Github', icon: <Github />, href: 'https://github.com/artumont' },
         { name: 'Email', icon: <Mail />, href: 'mailto:artumont@gmail.com' },
-        { name: 'Linkedin', icon: <Linkedin />, href: 'https://www.linkedin.com/in/arturo-montes-235391357' },
+        { name: 'Linkedin', icon: <Linkedin />, href: 'https://www.linkedin.com/in/artumont' },
     ];
 
     const myTraits = [
