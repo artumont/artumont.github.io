@@ -60,7 +60,7 @@ export default function NavBar() {
         <ul 
             className="flex text-lg space-x-10 justify-end font-normal"
         >
-            {['home', 'about', 'projects', 'contact'].map((item) => (
+            {['home', 'about', 'projects'].map((item) => (
                 <li key={item}>
                     <a 
                         href={`#${item}`}
@@ -131,7 +131,7 @@ export default function NavBar() {
                                     }
                                 }}
                             >
-                                {['home', 'about', 'projects', 'contact'].map((item) => (
+                                {['home', 'about', 'projects'].map((item) => (
                                     <motion.li
                                         key={item}
                             variants={{
