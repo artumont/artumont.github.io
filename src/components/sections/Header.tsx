@@ -33,7 +33,7 @@ export default function Header() {
                         delay={40}
                     />
                     <motion.a
-                        href="/" // @todo: Add link to CV
+                        href="/artumont-cv.pdf"
                         download
                         className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-accent/20 hover:bg-accent/30 
                                  text-white rounded-lg transition-all duration-300 border border-accent/50"
