@@ -80,14 +80,14 @@ export default function Projects() {
         projectContents = <div className="text-center p-4">No projects found</div>;
     } else {
         projectContents = (
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center min-w-full">
                 {repos.map(repo => (
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                         key={repo.id}
-                        className="w-full lg:w-[31%] mb-6 bg-secondary rounded-lg p-5 lg:m-4 flex flex-col"
+                        className="flex flex-col w-full lg:w-[31%] mb-6 bg-secondary rounded-lg p-5 lg:m-2"
                     >
                         <div className="flex-grow">
                             {/* Project Image */}
@@ -175,9 +175,7 @@ export default function Projects() {
                     <h1 className='text-4xl font-jetbrains mb-1'> Projects </h1>
                     <div className='h-1 w-40 bg-gradient-to-r from-accent to-accent/30'></div>
                 </div>
-                <div className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'>
-                    {projectContents}
-                </div>
+                {projectContents}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/40 to-transparent"></div>
             </div>
         </section>
