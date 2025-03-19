@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Server, Github, Mail, PanelsTopLeft, Cloud, Code2, Sparkles } from 'lucide-react'
+import { Server, Github, Mail, PanelsTopLeft, Cloud, Code2, Sparkles, Linkedin } from 'lucide-react'
 import Image from 'next/image';
 
 export default function About() {
@@ -46,7 +46,8 @@ export default function About() {
 
     const profileButtons = [
         { name: 'Github', icon: <Github />, href: 'https://github.com/artumont' },
-        { name: 'Email', icon: <Mail />, href: 'mailto:artumont@gmail.com' }
+        { name: 'Email', icon: <Mail />, href: 'mailto:artumont@gmail.com' },
+        { name: 'Linkedin', icon: <Linkedin />, href: 'https://www.linkedin.com/in/arturo-montes-235391357' },
     ];
 
     const myTraits = [
