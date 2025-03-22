@@ -107,20 +107,6 @@ export default function Projects() {
                             <p className="text-accent mb-4 font-inter">
                                 {repo.description || 'No description provided.'}
                             </p>
-                            
-                            {/* Project Metadata */}
-                            <div className="flex">
-                                {repo.language && (
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <Code2 size={16} className="text-accent" />
-                                        <span className="text-sm font-inter">{repo.language}</span>
-                                    </div>
-                                )}
-                                <div className="flex mx-4 items-center gap-2 mb-3">
-                                    <Star size={16} className="text-accent" />
-                                    <span className="text-sm font-inter">{repo.stargazers_count}</span>
-                                </div>
-                            </div>
                                 
                             {/* Project Topics */}
                             {repo.topics && repo.topics.length > 0 && (
@@ -134,7 +120,21 @@ export default function Projects() {
                                 </div>
                             )}
                         </div>
-                        
+
+                        {/* Project Metadata */}
+                        <div className="flex flex-row">
+                            {repo.language && (
+                                <div className="flex items-center gap-2 mb-3">
+                                    <Code2 size={16} className="text-accent" />
+                                    <span className="text-sm font-inter">{repo.language}</span>
+                                </div>
+                            )}
+                            <div className="flex mx-4 items-center gap-2 mb-3">
+                                <Star size={16} className="text-accent" />
+                                <span className="text-sm font-inter">{repo.stargazers_count}</span>
+                            </div>
+                        </div>
+
                         <div className="flex gap-3 mt-auto">
                             <motion.a
                                 whileHover={{ scale: 1.05 }}
