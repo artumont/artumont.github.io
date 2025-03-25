@@ -59,7 +59,7 @@ export default function About() {
     ];
 
     return (
-        <section className="w-full" id='about'>
+        <section className="w-full bg-primary" id='about'>
             {/* Content & Background */}
             <div className='relative h-full w-full bg-primary px-5 py-12 lg:px-32'>
                 <div className='container'>
