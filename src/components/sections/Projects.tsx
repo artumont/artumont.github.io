@@ -36,7 +36,7 @@ export default function Projects() {
     }
 
     const CACHE_KEY = 'github_repos_cache';
-    const CACHE_EXPIRATION = 1000 * 60 * 60; // 1 hour
+    const CACHE_EXPIRATION = 1000 * 60 * 60;
 
     const fetchWithRetry = async (url: string, retries = 3, delay = 1000) => {
         for (let i = 0; i < retries; i++) {
