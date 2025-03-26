@@ -4,7 +4,7 @@ import { Download } from 'lucide-react'
 
 export default function Header() {
     return (
-        <section className="w-full h-[100vh]" id='home'>
+        <section className="w-full" id='home'>
             {/* Background design */}
             <div className="container relative">
                 <div className="fixed top-0 right-0 w-full h-screen pointer-events-none z-0 overflow-hidden">
@@ -18,7 +18,7 @@ export default function Header() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4}} 
-                className="flex flex-col items-center justify-center h-full"
+                className="flex flex-col items-center justify-center h-screen"
             >
                 <div className='text-center w-auto max-w-3xl mx-auto'>    
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 lg:mb-3 tracking-tight relative">
@@ -46,7 +46,7 @@ export default function Header() {
                     </motion.a>
                 </div>
             </motion.div>
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/40 to-transparent"></div>
+            <div className="w-full h-1 bg-gradient-to-r from-transparent via-accent/40 to-transparent"></div>
         </section>
     );
 }
