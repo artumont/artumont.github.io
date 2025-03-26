@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Loading from "../ui/Loading";
 import { motion } from "motion/react";
 import { Code2, Github, ExternalLink, Star } from "lucide-react";
@@ -35,40 +35,90 @@ export default function Projects() {
         return `https://opengraph.githubassets.com/1/artumont/${name}`;
     }
 
-    useEffect(() => {
-        const getRepos = async () => {
-            setIsLoading(true);
-            try {
-                const response = await fetch('https://api.github.com/users/artumont/repos');
+    const CACHE_KEY = 'github_repos_cache';
+    const CACHE_EXPIRATION = 1000 * 60 * 60; // 1 hour
 
+    const fetchWithRetry = async (url: string, retries = 3, delay = 1000) => {
+        for (let i = 0; i < retries; i++) {
+            try {
+                const response = await fetch(url);
+                
+                if (response.status === 403) {
+                    const rateLimitReset = response.headers.get('X-RateLimit-Reset');
+                    if (rateLimitReset) {
+                        const waitTime = (parseInt(rateLimitReset) * 1000) - Date.now();
+                        if (waitTime > 0) {
+                            await new Promise(resolve => setTimeout(resolve, waitTime));
+                            continue;
+                        }
+                    }
+                }
+                
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 
-                const data = await response.json();
-
-                const filteredRepos = data
-                    .filter((repo: GitHubRepo) => !repo.fork)
-                    .sort((a: GitHubRepo, b: GitHubRepo) => 
-                        b.stargazers_count - a.stargazers_count)
-                    .filter((repo: GitHubRepo) => !excludeRepos.includes(repo.name));
-
-                for (const repo of filteredRepos) {
-                    repo.social_preview_url = repoImages[repo.name.toLowerCase()] || buildPreviewImage(repo.name);
-                }
-                
-                setRepos(filteredRepos);
-                setError(null);
-            } catch (err) {
-                console.error('Error fetching repos:', err);
-                setError('Failed to load projects. Please try again later.');
-            } finally {
-                setIsLoading(false);
+                return await response.json();
+            } catch (error) {
+                if (i === retries - 1) throw error;
+                await new Promise(resolve => setTimeout(resolve, delay * (i + 1)));
             }
-        };
+        }
+    };
+
+    const getRepos = useCallback(async () => {
+        setIsLoading(true);
         
-        getRepos();
+        try {
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const { data, timestamp } = JSON.parse(cached);
+                if (Date.now() - timestamp < CACHE_EXPIRATION) {
+                    setRepos(data);
+                    setError(null);
+                    setIsLoading(false);
+                    return;
+                }
+            }
+
+            const data = await fetchWithRetry('https://api.github.com/users/artumont/repos');
+            
+            const filteredRepos = data
+                .filter((repo: GitHubRepo) => !repo.fork)
+                .sort((a: GitHubRepo, b: GitHubRepo) => 
+                    b.stargazers_count - a.stargazers_count)
+                .filter((repo: GitHubRepo) => !excludeRepos.includes(repo.name));
+
+            for (const repo of filteredRepos) {
+                repo.social_preview_url = repoImages[repo.name.toLowerCase()] || buildPreviewImage(repo.name);
+            }
+
+            localStorage.setItem(CACHE_KEY, JSON.stringify({
+                data: filteredRepos,
+                timestamp: Date.now()
+            }));
+            
+            setRepos(filteredRepos);
+            setError(null);
+        } catch (err) {
+            console.error('Error fetching repos:', err);
+            
+            const cached = localStorage.getItem(CACHE_KEY);
+            if (cached) {
+                const { data } = JSON.parse(cached);
+                setRepos(data);
+                setError('Using cached data. Failed to fetch latest projects.');
+            } else {
+                setError('Failed to load projects. Please try again later.');
+            }
+        } finally {
+            setIsLoading(false);
+        }
     }, []);
+
+    useEffect(() => {
+        getRepos();
+    }, [getRepos]);
 
     let projectContents;
     
