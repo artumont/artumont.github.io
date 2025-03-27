@@ -12,6 +12,7 @@ export default function About() {
 
     const backendTechstack = [
         { name: 'Springboot', class: 'brightness-100 invert', logo: '/logos/springboot.svg' },
+        { name: 'Phoenix' , class: 'brightness-100 invert', logo: '/logos/phoenix.svg' },
         { name: 'Fastapi', class: 'brightness-100 invert', logo: '/logos/fastapi.svg' },
         { name: 'Flask', class: 'brightness-100 invert', logo: '/logos/flask.svg' },
         { name: 'ExpressJS', class: 'brightness-100 invert', logo: '/logos/express.svg' },
@@ -38,6 +39,7 @@ export default function About() {
         { name: 'C#', class: 'brightness-100 invert', logo: '/logos/cs.svg' },
         { name: 'C++', class: 'brightness-100 invert', logo: '/logos/cpp.svg' },
         { name: 'Java', class: 'brightness-100 invert', logo: '/logos/java.svg' },
+        { name: 'Elixir', class: 'brightness-100 invert', logo: '/logos/elixir.svg' },
         { name: 'Python', class: 'brightness-100 invert', logo: '/logos/python.svg' },
         { name: 'JavaScript', class: 'brightness-100 invert', logo: '/logos/javascript.svg' },
         { name: 'TypeScript', class: 'brightness-100 invert', logo: '/logos/typescript.svg' },
