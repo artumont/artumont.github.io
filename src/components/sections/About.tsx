@@ -12,10 +12,10 @@ export default function About() {
 
     const backendTechstack = [
         { name: 'Springboot', class: 'brightness-100 invert', logo: '/logos/springboot.svg' },
-        { name: 'Phoenix' , class: 'brightness-100 invert', logo: '/logos/phoenix.svg' },
         { name: 'Fastapi', class: 'brightness-100 invert', logo: '/logos/fastapi.svg' },
         { name: 'Flask', class: 'brightness-100 invert', logo: '/logos/flask.svg' },
         { name: 'ExpressJS', class: 'brightness-100 invert', logo: '/logos/express.svg' },
+        { name: 'Phoenix Framework' , class: 'brightness-100 invert', logo: '/logos/phoenix.svg' },
         { name: 'MySQL', class: 'brightness-100 invert', logo: '/logos/mysql.svg' },
         { name: 'SQLite', class: 'brightness-100 invert', logo: '/logos/sqlite.svg' },
         { name: 'PostgreSQL', class: 'brightness-100 invert', logo: '/logos/postgresql.svg' },
