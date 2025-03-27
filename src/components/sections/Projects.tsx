@@ -22,6 +22,8 @@ export default function Projects() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const cache_key = 'github_repos_cache';
+    const cache_expiration = 1000 * 60 * 60;
     const excludeRepos = ['artumont', 'artumont.github.io'];
 
     const repoImages: Record<string, string> = {
@@ -35,8 +37,6 @@ export default function Projects() {
         return `https://opengraph.githubassets.com/1/artumont/${name}`;
     }
 
-    const CACHE_KEY = 'github_repos_cache';
-    const CACHE_EXPIRATION = 1000 * 60 * 60; // 1 hour
 
     const fetchWithRetry = async (url: string, retries = 3, delay = 1000) => {
         for (let i = 0; i < retries; i++) {
@@ -70,10 +70,10 @@ export default function Projects() {
         setIsLoading(true);
         
         try {
-            const cached = localStorage.getItem(CACHE_KEY);
+            const cached = localStorage.getItem(cache_key);
             if (cached) {
                 const { data, timestamp } = JSON.parse(cached);
-                if (Date.now() - timestamp < CACHE_EXPIRATION) {
+                if (Date.now() - timestamp < cache_expiration) {
                     setRepos(data);
                     setError(null);
                     setIsLoading(false);
@@ -93,7 +93,7 @@ export default function Projects() {
                 repo.social_preview_url = repoImages[repo.name.toLowerCase()] || buildPreviewImage(repo.name);
             }
 
-            localStorage.setItem(CACHE_KEY, JSON.stringify({
+            localStorage.setItem(cache_key, JSON.stringify({
                 data: filteredRepos,
                 timestamp: Date.now()
             }));
@@ -103,7 +103,7 @@ export default function Projects() {
         } catch (err) {
             console.error('Error fetching repos:', err);
             
-            const cached = localStorage.getItem(CACHE_KEY);
+            const cached = localStorage.getItem(cache_key);
             if (cached) {
                 const { data } = JSON.parse(cached);
                 setRepos(data);
