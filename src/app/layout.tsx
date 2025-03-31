@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, jetBrainsMono, pixelOperator } from "@/fonts/fonts";
+import { inter, jetBrainsMono } from "@/fonts/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${inter.variable} ${jetBrainsMono.variable} ${pixelOperator.variable} antialiased`}
+				className={`${inter.variable} ${jetBrainsMono.variable} antialiased`}
 			>   
 				{children}
 			</body>
