@@ -1,11 +1,4 @@
-import localFont from 'next/font/local'
 import { Inter, JetBrains_Mono } from 'next/font/google'
-
-export const pixelOperator = localFont({
-    variable: "--font-pixel-operator",
-    src: './pixel-operator.ttf',
-    display: 'swap',
-})
 
 export const inter = Inter({
     variable: "--font-inter",
