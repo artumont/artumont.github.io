@@ -41,6 +41,7 @@ export default function About() {
         { name: 'Java', class: 'brightness-100 invert', logo: '/logos/java.svg' },
         { name: 'Elixir', class: 'brightness-100 invert', logo: '/logos/elixir.svg' },
         { name: 'Python', class: 'brightness-100 invert', logo: '/logos/python.svg' },
+        { name: 'Go', class: 'brightness-100 invert', logo: '/logos/go.svg' },
         { name: 'JavaScript', class: 'brightness-100 invert', logo: '/logos/javascript.svg' },
         { name: 'TypeScript', class: 'brightness-100 invert', logo: '/logos/typescript.svg' },
         { name: 'SQL', class: 'brightness-100 invert', logo: '/logos/sql.svg' },
