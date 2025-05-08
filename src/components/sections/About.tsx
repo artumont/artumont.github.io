@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Server, Github, Mail, PanelsTopLeft, Cloud, Code2, Sparkles, Linkedin } from 'lucide-react'
+import { Server, Github, Mail, PanelsTopLeft, Cloud, Code2, Linkedin } from 'lucide-react'
 import Image from 'next/image';
 
 export default function About() {
@@ -15,7 +15,7 @@ export default function About() {
         { name: 'Fastapi', class: 'brightness-100 invert', logo: '/logos/fastapi.svg' },
         { name: 'Flask', class: 'brightness-100 invert', logo: '/logos/flask.svg' },
         { name: 'ExpressJS', class: 'brightness-100 invert', logo: '/logos/express.svg' },
-        { name: 'Phoenix Framework' , class: 'brightness-100 invert', logo: '/logos/phoenix.svg' },
+        { name: 'Phoenix Framework', class: 'brightness-100 invert', logo: '/logos/phoenix.svg' },
         { name: 'MySQL', class: 'brightness-100 invert', logo: '/logos/mysql.svg' },
         { name: 'SQLite', class: 'brightness-100 invert', logo: '/logos/sqlite.svg' },
         { name: 'PostgreSQL', class: 'brightness-100 invert', logo: '/logos/postgresql.svg' },
@@ -51,14 +51,15 @@ export default function About() {
         { name: 'Github', icon: <Github />, href: 'https://github.com/artumont' },
         { name: 'Email', icon: <Mail />, href: 'mailto:artumont@gmail.com' },
         { name: 'Linkedin', icon: <Linkedin />, href: 'https://www.linkedin.com/in/artumont' },
+        { name: 'Leetcode', icon: <Image src={'/logos/leetcode.svg'} alt='' width={25} height={25} className='brightness-100 invert' />, href: 'https://leetcode.com/u/artumont/' }
     ];
 
     const myTraits = [
-        { name: 'Problem Solver'},
-        { name: 'Team Player'},
-        { name: 'Self Learner'},
-        { name: 'Detail-Oriented'},
-        { name: 'Passionate'},
+        { name: 'Problem Solver' },
+        { name: 'Team Player' },
+        { name: 'Self Learner' },
+        { name: 'Detail-Oriented' },
+        { name: 'Passionate' },
     ];
 
     return (
@@ -72,13 +73,13 @@ export default function About() {
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.8}}  
+                    transition={{ duration: 0.5, delay: 0.8 }}
                     className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'
                 >
                     {/* Profile */}
                     <div className='flex flex-col lg:max-w-[50%] bg-secondary mt-10 rounded-lg p-5 mx-5 lg:mx-0 lg:mr-5'>
                         <div className='flex flex-col lg:flex-row items-center lg:mb-3'>
-                            <Image 
+                            <Image
                                 src='https://avatars.githubusercontent.com/u/197291181?v=4'
                                 alt='Artu'
                                 width={190}
