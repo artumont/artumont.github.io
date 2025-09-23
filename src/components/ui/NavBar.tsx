@@ -39,20 +39,12 @@ export default function NavBar() {
         visible: { 
             opacity: 1, 
             x: 0, 
-            scale: 1,
-            transition: {
-                duration: 0.3,
-                ease: "easeOut"
-            }
+            scale: 1
         },
         exit: { 
             opacity: 0, 
             x: "100%", 
-            scale: 0.95,
-            transition: {
-                duration: 0.2,
-                ease: "easeIn"
-            }
+            scale: 0.95
         }
     }
 
@@ -116,7 +108,11 @@ export default function NavBar() {
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            transition={{ 
+                                duration: 0.3, 
+                                ease: "easeOut",
+                                exit: { duration: 0.2, ease: "easeIn" }
+                            }}
                         >
                             <motion.ul 
                                 className="flex flex-col space-y-6 text-lg"
