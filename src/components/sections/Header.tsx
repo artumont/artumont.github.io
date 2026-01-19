@@ -28,7 +28,7 @@ export default function Header() {
                         Linux Enthusiast
                     </h2>
                     <TerminalText
-                        text="I'm a full stack developer with a passion for backend development, linux enviroments and computer vision projects." 
+                        text="I'm a fullstack developer with a passion for backend development, linux enviroments and computer vision projects." 
                         className="text-lg lg:text-xl lg:max-w-[100%] mt-2 font-jetbrains text-center mx-auto" 
                         delay={40}
                     />
