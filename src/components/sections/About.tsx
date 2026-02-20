@@ -212,11 +212,11 @@ export default function About() {
                                         height={60}
                                         className='rounded-full border-4 border-accent/50 mb-2 lg:mb-0'
                                     />
-                                    <div className='flex flex-col lg:ml-5'>
+                                    <div className='flex flex-col lg:ml-5 text-center lg:text-left'>
                                         <h1 className='text-lg font-jetbrains'> {work.company} </h1>
                                         <h2 className='text-md font-jetbrains text-accent'> {work.role} </h2>
                                         <h3 className='text-sm font-inter text-accent italic'> {work.duration} </h3>
-                                        <p className='text-md font-inter text-accent mt-2 text-justify'> {work.description} </p>
+                                        <p className='text-md font-inter text-accent mt-2 text-justify lg:text-left'> {work.description} </p>
                                     </div>
                                 </div>
                             ))}
