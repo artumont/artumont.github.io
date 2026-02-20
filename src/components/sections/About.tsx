@@ -4,12 +4,6 @@ import Image from 'next/image';
 
 export default function About() {
 
-    const frontendTechstack = [
-        { name: 'Next.js', class: 'brightness-100 invert', logo: '/logos/nextjs.svg' },
-        { name: 'Angular', class: 'brightness-100 invert', logo: '/logos/angular.svg' },
-        { name: 'TailwindCSS', class: 'brightness-100 invert', logo: '/logos/tailwindcss.svg' },
-    ];
-
     const backendTechstack = [
         { name: 'Springboot', class: 'brightness-100 invert', logo: '/logos/springboot.svg' },
         { name: 'Fastapi', class: 'brightness-100 invert', logo: '/logos/fastapi.svg' },
@@ -62,6 +56,16 @@ export default function About() {
         { name: 'Passionate' },
     ];
 
+    const workExperience = [
+        {
+            company: 'Soluciones en Automatización e Instrumentación SA de CV',
+            role: 'Backend and Distributed Systems Engineer',
+            duration: 'Nov 2025 - Present',
+            description: 'Designed and built the core of a scalable ERP system to centralize purchasing, inventory, and billing, utilizing FastAPI and Python to create high-performance RESTful APIs. Led deployment orchestration using Docker and Nginx, implementing CI/CD pipelines (GitHub Actions) and Bash scripts to ensure parity between development and production environments. Modeled complex relational databases in PostgreSQL and secured the platform using JWT authentication and role-based access control (RBAC). Optimized critical operational workflows through automated document generation (invoices/purchase orders) and storage management with Minio.',
+            logo: '/logos/saisa.png'
+        },
+    ];
+
     return (
         <section className="w-full bg-primary" id='about'>
             {/* Content & Background */}
@@ -88,7 +92,7 @@ export default function About() {
                             />
                             <div className='flex text-center lg:text-start flex-col lg:ml-5'>
                                 <h1 className='text-2xl font-jetbrains'> Artu (@artumont) </h1>
-                                <h2 className='text-lg font-jetbrains'> Fullstack Developer </h2>
+                                <h2 className='text-lg font-jetbrains'> Backend Developer </h2>
                                 <div className='flex flex-row mt-1 justify-center lg:justify-normal'>
                                     {profileButtons.map((button, index) => (
                                         <motion.button
@@ -126,30 +130,10 @@ export default function About() {
                         <div className='flex flex-col h-full w-full mt-6'>
                             <div className='flex flex-col items-center lg:items-start'>
                                 <div className='flex flex-row'>
-                                    <PanelsTopLeft />
-                                    <h1 className='text-lg font-jetbrains mb-1 ml-2'>Frontend</h1>
-                                </div>
-                                <div className='flex flex-wrap justify-center lg:justify-normal gap-2 mt-1'>
-                                    {frontendTechstack.map((tech, index) => (
-                                        <div key={index} className={`flex flex-row items-center justify-center gap-1 p-2 rounded-lg bg-terciary`}>
-                                            <Image
-                                                src={tech.logo}
-                                                alt={tech.name}
-                                                className={`filter ${tech.class}`}
-                                                width={18}
-                                                height={18}
-                                            />
-                                            <span className='ml-1 text-sm font-inter'>{tech.name}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className='flex flex-col mt-6 items-center lg:items-start'>
-                                <div className='flex flex-row'>
                                     <Server />
                                     <h1 className='text-lg font-jetbrains mb-1 ml-2'>Backend</h1>
                                 </div>
-                                <div className='flex flex-wrap justify-center lg:justify-normal gap-2 mt-1'>
+                                <div className='flex flex-wrap justify-center lg:justify-normal gap-2'>
                                     {backendTechstack.map((tech, index) => (
                                         <div key={index} className={`flex flex-row items-center justify-center gap-1 p-2 rounded-lg bg-terciary`}>
                                             <Image
@@ -204,6 +188,38 @@ export default function About() {
                                     ))}
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Work Experience */}
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'
+                >
+                    <div className='flex flex-col w-full bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0'>
+                        <h1 className='text-xl font-jetbrains mb-1 text-center'>Work Experience</h1>
+                        <div className='h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30'></div>
+                        <div className='flex flex-col h-full w-full mt-6'>
+                            {workExperience.map((work, index) => (
+                                <div key={index} className='flex flex-col lg:flex-row items-center lg:items-start bg-terciary p-4 gap-1 m-1 rounded-lg'>
+                                    <Image
+                                        src={work.logo}
+                                        alt={work.company}
+                                        width={60}
+                                        height={60}
+                                        className='rounded-full border-4 border-accent/50 mb-2 lg:mb-0'
+                                    />
+                                    <div className='flex flex-col lg:ml-5'>
+                                        <h1 className='text-lg font-jetbrains'> {work.company} </h1>
+                                        <h2 className='text-md font-jetbrains text-accent'> {work.role} </h2>
+                                        <h3 className='text-sm font-inter text-accent italic'> {work.duration} </h3>
+                                        <p className='text-md font-inter text-accent mt-2 text-justify'> {work.description} </p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </motion.div>

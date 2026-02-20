@@ -22,13 +22,13 @@ export default function Header() {
             >
                 <div className='text-center w-auto max-w-3xl mx-auto'>    
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 lg:mb-3 tracking-tight relative">
-                        Fullstack Developer
+                        Backend Developer
                     </h1>
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gradient font-jetbrains">
                         Linux Enthusiast
                     </h2>
                     <TerminalText
-                        text="I'm a fullstack developer with a passion for backend development, linux enviroments and computer vision projects." 
+                        text="I'm a backend and distributed systems engineer with a passion for linux enviroments and computer vision projects." 
                         className="text-lg lg:text-xl lg:max-w-[100%] mt-2 font-jetbrains text-center mx-auto" 
                         delay={40}
                     />
