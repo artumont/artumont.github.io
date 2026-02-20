@@ -197,9 +197,9 @@ export default function About() {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
-                    className='flex flex-col lg:flex-row min-h-[100%] justify-center lg:justify-between'
+                    className='flex flex-col lg:flex-row justify-center lg:justify-between'
                 >
-                    <div className='flex flex-col w-full bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0'>
+                    <div className='flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0'>
                         <h1 className='text-xl font-jetbrains mb-1 text-center'>Work Experience</h1>
                         <div className='h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30'></div>
                         <div className='flex flex-col h-full w-full mt-6'>
@@ -216,7 +216,7 @@ export default function About() {
                                         <h1 className='text-lg font-jetbrains'> {work.company} </h1>
                                         <h2 className='text-md font-jetbrains text-accent'> {work.role} </h2>
                                         <h3 className='text-sm font-inter text-accent italic'> {work.duration} </h3>
-                                        <p className='text-md font-inter text-accent mt-2 text-justify lg:text-left'> {work.description} </p>
+                                        <p className='text-md font-inter text-accent mt-2 text-justify'> {work.description} </p>
                                     </div>
                                 </div>
                             ))}
