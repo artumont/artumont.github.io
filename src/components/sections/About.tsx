@@ -58,7 +58,7 @@ export default function About() {
 
     const workExperience = [
         {
-            company: 'Soluciones en Automatización e Instrumentación SA de CV',
+            company: 'Servicios de Automatización e Instrumentación SA de CV',
             role: 'Backend and Distributed Systems Engineer',
             duration: 'Nov 2025 - Present',
             description: 'Designed and built the core of a scalable ERP system to centralize purchasing, inventory, and billing, utilizing FastAPI and Python to create high-performance RESTful APIs. Led deployment orchestration using Docker and Nginx, implementing CI/CD pipelines (GitHub Actions) and Bash scripts to ensure parity between development and production environments. Modeled complex relational databases in PostgreSQL and secured the platform using JWT authentication and role-based access control (RBAC). Optimized critical operational workflows through automated document generation (invoices/purchase orders) and storage management with Minio.',
