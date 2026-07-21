@@ -3,18 +3,28 @@ import { inter, jetBrainsMono } from "@/fonts/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: 'Artu - FullStack Developer Portfolio',
-    description: 'Experienced developer specializing in modern web technologies and full-stack development.',
-    keywords: 'fullstack developer, web development, portfolio, software engineer, Artu, artumont',
-    authors: [{ name: 'Artu' }],
+    metadataBase: new URL('https://artumont.online'),
+    title: 'Arturo Montes - Backend & DevOps Engineer',
+    description: 'Backend & DevOps Engineer specializing in Docker, Kubernetes, CI/CD pipelines, and scalable microservices architectures.',
+    keywords: 'backend engineer, devops, docker, kubernetes, ci/cd, python, go, fastapi, microservices, infrastructure',
+    authors: [{ name: 'Arturo Montes' }],
     robots: {
         index: true,
         follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+            'max-video-preview': -1,
+        },
     },
     openGraph: {
-        title: 'Artu - FullStack Developer Portfolio',
-        description: 'Experienced developer specializing in modern web technologies and full-stack development.',
+        title: 'Arturo Montes - Backend & DevOps Engineer',
+        description: 'Backend & DevOps Engineer specializing in Docker, Kubernetes, CI/CD pipelines, and scalable microservices architectures.',
         type: 'website',
+        url: '/',
+        siteName: 'Arturo Montes',
         images: [{
             url: 'https://avatars.githubusercontent.com/u/197291181?v=4',
         }],
@@ -23,7 +33,7 @@ export const metadata: Metadata = {
         icon: 'https://avatars.githubusercontent.com/u/197291181?v=4',
     },
     alternates: {
-        canonical: 'https://artumont.github.io',
+        canonical: '/',
     },
 };
 
