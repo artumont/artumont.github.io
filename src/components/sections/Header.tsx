@@ -20,7 +20,7 @@ export default function Header() {
                 transition={{ duration: 0.5, delay: 0.4}} 
                 className="flex flex-col items-center justify-center h-screen"
             >
-                <div className='text-center w-auto max-w-3xl mx-auto'>    
+                <div className='text-center w-auto max-w-5xl mx-auto'>    
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 lg:mb-3 tracking-tight relative">
                         Backend & DevOps Engineer
                     </h1>
