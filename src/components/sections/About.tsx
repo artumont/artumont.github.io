@@ -54,7 +54,6 @@ const platformStack = [
 const languageStack = [
     { name: 'Python', logo: '/logos/python.svg' },
     { name: 'Go', logo: '/logos/go.svg' },
-    { name: 'Lua', logo: '/logos/lua.svg' },
     { name: 'Elixir', logo: '/logos/elixir.svg' },
     { name: 'C', logo: '/logos/c.svg' },
     { name: 'C++', logo: '/logos/cpp.svg' },
