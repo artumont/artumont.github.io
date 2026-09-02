@@ -12,15 +12,6 @@ const projects = [
         blog: null,
     },
     {
-        name: 'agent-smith.nvim',
-        description: 'Neovim AI agent with bounded visual edits, multi-file changes with approval, semantic search, and sandboxed Vibe sessions.',
-        why: 'Created to have full control over AI-assisted coding inside Neovim without relying on external GUI tools.',
-        stack: ['Lua', 'Neovim', 'AI Integration'],
-        github: 'https://github.com/artumont/agent-smith.nvim',
-        link: null,
-        blog: null,
-    },
-    {
         name: 'GitHotswap',
         description: 'CLI tool to switch between Git user profiles without editing .gitconfig manually. Perfect for managing work/personal identities.',
         why: 'Tired of manually editing .gitconfig every time I switched between work and personal repos.',
