@@ -80,6 +80,7 @@ export const cvData = {
       "Database Management",
       "CI/CD Pipelines",
       "Container Orchestration",
+      "Infrastructure as Code",
       "Object-Oriented Programming",
       "REST API Design",
     ],
@@ -100,7 +101,7 @@ export const cvData = {
           },
           {
             label: "Infrastructure and DevOps",
-            text: "Led deployment orchestration using Docker and Nginx, implementing CI/CD pipelines with GitHub Actions and Bash scripts to ensure parity between development and production environments.",
+            text: "Automated Proxmox LXC provisioning with Terraform and configured hosts using Ansible playbooks for Docker stack deployment, covering multi-environment inventory (dev/staging/prod) with Vault-encrypted secrets.",
           },
           {
             label: "Data Management and Security",
@@ -118,7 +119,8 @@ export const cvData = {
         name: "SiaERP",
         description:
           "Enterprise platform for client and project management, quotations, invoices and payments, expenses, inventory, document generation, and analytics. Seven domain microservices communicate through Redis events and deploy independently through Docker-based CI/CD.",
-        stack: "Python, FastAPI, PostgreSQL, Redis, MinIO, Docker",
+        stack:
+          "Python, FastAPI, PostgreSQL, Redis, S3, Docker, Terraform, Ansible",
         duration: "Nov 2025 - Present",
         link: null,
       },
@@ -206,6 +208,7 @@ export const cvData = {
       "Gestión de Bases de Datos",
       "Pipelines CI/CD",
       "Orquestación de Contenedores",
+      "Infraestructura como Código",
       "Programación Orientada a Objetos",
       "Diseño de APIs REST",
     ],
@@ -226,7 +229,7 @@ export const cvData = {
           },
           {
             label: "Infraestructura y DevOps",
-            text: "Lideré orquestación de despliegues con Docker y Nginx, implementando pipelines CI/CD con GitHub Actions y scripts Bash para asegurar paridad entre desarrollo y producción.",
+            text: "Automatiqué provisionamiento de LXC en Proxmox con Terraform y configuré hosts mediante playbooks Ansible para despliegue de stacks Docker, cubriendo inventario multi-ambiente (dev/staging/prod) con secretos cifrados por Vault.",
           },
           {
             label: "Datos y Seguridad",
@@ -244,7 +247,8 @@ export const cvData = {
         name: "SiaERP",
         description:
           "Plataforma empresarial para gestión de clientes y proyectos, cotizaciones, facturas y pagos, gastos, inventario, generación documental y analítica. Siete microservicios de dominio se comunican mediante eventos Redis y se despliegan de forma independiente con CI/CD basado en Docker.",
-        stack: "Python, FastAPI, PostgreSQL, Redis, MinIO, Docker",
+        stack:
+          "Python, FastAPI, PostgreSQL, Redis, S3, Docker, Terraform, Ansible",
         duration: "Nov 2025 - Actualidad",
         link: null,
       },
