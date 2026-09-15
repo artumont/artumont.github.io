@@ -157,7 +157,7 @@ export const cvData = {
         link: "https://github.com/artumont/dotslashstream",
       },
       {
-        name: "Altur VConstruct",
+        name: "altur-vconstruct",
         description:
           "Real-time voice deepfake detection system for phone calls. Uses WavLM-large backbone with MLP classifier and ONNX inference, achieving 99.5% accuracy and ~0.5s latency. Built for HackMTY 2026.",
         stack: "Python, FastAPI, WavLM, ONNX, Docker, Next.js",
@@ -285,7 +285,7 @@ export const cvData = {
         link: "https://github.com/artumont/dotslashstream",
       },
       {
-        name: "Altur VConstruct",
+        name: "altur-vconstruct",
         description:
           "Sistema de detección de voz sintética en llamadas telefónicas en tiempo real. Usa backbone WavLM-large con clasificador MLP e inferencia ONNX, logrando 99.5% de precisión y ~0.5s de latencia. Construido para HackMTY 2026.",
         stack: "Python, FastAPI, WavLM, ONNX, Docker, Next.js",
