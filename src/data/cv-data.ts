@@ -157,12 +157,12 @@ export const cvData = {
         link: "https://github.com/artumont/dotslashstream",
       },
       {
-        name: "Nebula",
+        name: "Altur VConstruct",
         description:
-          "Native C++ space simulation using Vulkan for real-time rendering. Work in progress.",
-        stack: "C++, Vulkan",
-        duration: "2025 - Present",
-        link: "https://github.com/artumont/nebula",
+          "Real-time voice deepfake detection system for phone calls. Uses WavLM-large backbone with MLP classifier and ONNX inference, achieving 99.5% accuracy and ~0.5s latency. Built for HackMTY 2026.",
+        stack: "Python, FastAPI, WavLM, ONNX, Docker, Next.js",
+        duration: "Sep 2026",
+        link: "https://github.com/artumont/altur-vconstruct",
       },
     ],
     education: [
@@ -285,12 +285,12 @@ export const cvData = {
         link: "https://github.com/artumont/dotslashstream",
       },
       {
-        name: "Nebula",
+        name: "Altur VConstruct",
         description:
-          "Simulación de espacio nativa en C++ con Vulkan para renderizado en tiempo real. En progreso.",
-        stack: "C++, Vulkan",
-        duration: "2025 - Actualidad",
-        link: "https://github.com/artumont/nebula",
+          "Sistema de detección de voz sintética en llamadas telefónicas en tiempo real. Usa backbone WavLM-large con clasificador MLP e inferencia ONNX, logrando 99.5% de precisión y ~0.5s de latencia. Construido para HackMTY 2026.",
+        stack: "Python, FastAPI, WavLM, ONNX, Docker, Next.js",
+        duration: "Sep 2026",
+        link: "https://github.com/artumont/altur-vconstruct",
       },
     ],
     education: [
