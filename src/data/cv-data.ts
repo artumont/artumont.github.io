@@ -34,31 +34,19 @@ export const cvFonts = {
 
 export const cvAppearance = {
   font: "helvetica" as keyof typeof cvFonts,
-  watermark: {
-    enabled: true,
-    quotes: [
-      { text: "Follow the white rabbit.", icon: "/icons/cv/rabbit.png" },
-      { text: "There is no spoon.", icon: "/icons/cv/utensils.png" },
-      { text: "Free your mind.", icon: "/icons/cv/eye.png" },
-      { text: "Wake up, Neo.", icon: "/icons/cv/power.png" },
-      { text: "The Matrix has you.", icon: "/icons/cv/binary.png" },
-      { text: "Know thyself.", icon: "/icons/cv/scan-face.png" },
-      {
-        text: "Everything that has a beginning has an end.",
-        icon: "/icons/cv/refresh-cw.png",
-      },
-    ],
-  },
 };
 
 export const cvData = {
   en: {
     name: "Arturo Montes",
     title: "Backend & DevOps Engineer",
+    summary: "Junior · Hybrid in Monterrey, Nuevo León",
+    pitch: "Backend and platform engineering, with full autonomy to design and operate services in production.",
     labels: {
       phone: "Phone",
       email: "Email",
       website: "Web",
+      github: "GitHub",
       location: "Location",
       skills: "Skills",
       languages: "Languages",
@@ -71,18 +59,21 @@ export const cvData = {
       phone: "+52 81 2446 4219",
       email: "artumontg@gmail.com",
       website: "artumont.online",
+      github: "github.com/artumont",
       location: "Nuevo León, Mexico",
     },
     skills: [
-      "Backend Development",
-      "DevOps & Infrastructure",
-      "Distributed Systems",
-      "Database Management",
-      "CI/CD Pipelines",
-      "Container Orchestration",
-      "Infrastructure as Code",
-      "Object-Oriented Programming",
-      "REST API Design",
+      { family: "Backend & APIs", items: "Python · FastAPI · Go · REST API Design · Distributed Systems (microservices)" },
+      { family: "Data & Storage", items: "PostgreSQL · Redis · MinIO" },
+      {
+        family: "Infrastructure",
+        items: "Docker · Kubernetes (K8s) · Terraform · Ansible · Infrastructure as Code (IaC)",
+      },
+      { family: "Observability", items: "Prometheus · Grafana · Loki" },
+      {
+        family: "CI/CD & Security",
+        items: "CI/CD (continuous integration and delivery) · JWT · RBAC",
+      },
     ],
     languages: [
       { name: "English", level: "C2 Proficient" },
@@ -97,19 +88,19 @@ export const cvData = {
         highlights: [
           {
             label: "Development and Architecture",
-            text: "Designed the core architecture of SiaERP, covering clients, projects, quotations, invoices and payments, expenses, inventory, document workflows, and analytics through independent FastAPI services.",
+            text: "Built SiaERP: FastAPI services covering clients, projects, quotations, invoices and payments, expenses, inventory, document workflows, and analytics, serving ~15–20 internal users.",
           },
           {
             label: "Infrastructure and DevOps",
-            text: "Automated Proxmox LXC provisioning with Terraform and configured hosts using Ansible playbooks for Docker stack deployment, covering multi-environment inventory (dev/staging/prod) with Vault-encrypted secrets.",
+            text: "Shipped Vault-secured Docker stacks to dev/staging/prod instrumented with Prometheus and Grafana for metrics and Loki for logs, and cut new from-scratch Proxmox LXC provisioning from ~1 hour to ~10 minutes with Terraform and Ansible.",
           },
           {
             label: "Data Management and Security",
-            text: "Modeled complex relational databases in PostgreSQL and secured the platform using JWT authentication and role-based access control (RBAC).",
+            text: "Modeled the relational data layer as one database per service inside a single PostgreSQL instance, secured with JWT authentication and role-based access control (RBAC).",
           },
           {
             label: "Automation",
-            text: "Optimized critical workflows through automated document generation for invoices and purchase orders, plus MinIO storage management.",
+            text: "Delivered MinIO as the platform's single file store (S3-compatible), plus an end-to-end automated invoice and purchase-order workflow.",
           },
         ],
       },
@@ -118,75 +109,66 @@ export const cvData = {
       {
         name: "SiaERP",
         description:
-          "Enterprise platform for client and project management, quotations, invoices and payments, expenses, inventory, document generation, and analytics. Seven domain microservices communicate through Redis events and deploy independently through Docker-based CI/CD.",
+          "Enterprise platform covering clients, projects, quotations, invoices and payments, expenses, inventory, document workflows, and analytics as FastAPI domain services.",
         stack:
           "Python, FastAPI, PostgreSQL, Redis, S3, Docker, Terraform, Ansible",
         duration: "Nov 2025 - Present",
         link: null,
       },
       {
-        name: "GitHotswap",
-        description:
-          "CLI for creating, editing, listing, and switching Git identities without manually modifying .gitconfig. Built to keep work and personal profiles isolated.",
-        stack: "Go, CLI",
-        duration: "Mar 2025 - Apr 2025",
-        link: "https://github.com/artumont/GitHotswap",
-      },
-      {
-        name: "ConcurrentChatSystem",
-        description:
-          "Real-time chat application with concurrent rooms, a Phoenix Channels/WebSockets backend, and a Next.js client. Created to explore Elixir concurrency and its actor model.",
-        stack: "Elixir, Phoenix, Next.js",
-        duration: "Mar 2025",
-        link: "https://github.com/artumont/ConcurrentChatSystem",
-      },
-      {
-        name: "EcommerceDocker",
-        description:
-          "REST API with MongoDB, Docker Compose, health checks, and Kubernetes manifests for scaling and load balancing. GitHub Actions automates image builds.",
-        stack: "Node.js, MongoDB, Docker, Kubernetes",
-        duration: "Mar 2025",
-        link: "https://github.com/artumont/EcommerceDocker",
-      },
-      {
         name: "DotSlashStream",
         description:
-          "Torrent media streaming platform supporting multiple indexers, with a Go API, Redis queues, PostgreSQL metadata, and MinIO object storage.",
+          "Torrent streaming platform with a Go API, Redis queues, PostgreSQL metadata, and MinIO storage.",
         stack: "Go, Redis, PostgreSQL, MinIO",
         duration: "Jul 2025 - Present",
         link: "https://github.com/artumont/dotslashstream",
       },
       {
-        name: "altur-vconstruct",
+        name: "EcommerceDocker",
         description:
-          "Real-time voice deepfake detection system for phone calls. Uses WavLM-large backbone with MLP classifier and ONNX inference, achieving 99.5% accuracy and ~0.5s latency. Built for HackMTY 2026.",
-        stack: "Python, FastAPI, WavLM, ONNX, Docker, Next.js",
-        duration: "Sep 2026",
-        link: "https://github.com/artumont/altur-vconstruct",
+          "REST API with Docker Compose, health checks, and Kubernetes (K8s) manifests; CI via GitHub Actions.",
+        stack: "Node.js, MongoDB, Docker, Kubernetes (K8s)",
+        duration: "Mar 2025",
+        link: "https://github.com/artumont/EcommerceDocker",
+      },
+      {
+        name: "ConcurrentChatSystem",
+        description:
+          "Real-time chat with concurrent rooms and a Phoenix Channels/WebSockets backend.",
+        stack: "Elixir, Phoenix, Next.js",
+        duration: "Mar 2025",
+        link: "https://github.com/artumont/ConcurrentChatSystem",
       },
     ],
     education: [
       {
         institution: "Universidad Tecmilenio San Nicolás",
         location: "Monterrey, Nuevo León",
-        duration: "Aug 2024 - Present",
+        duration: "Aug 2024 - Present (5th of 8 semesters)",
         program: "Software Development Engineering",
       },
     ],
+    // Orden cronologico descendente (mas reciente primero), identico en en/es.
     certifications: [
-      "AWS Academy Graduate - Cloud Foundations",
-      "AWS Academy Graduate - Cloud Operations",
-      "Cisco Python Essentials 1",
-      "Tecmilenio DevOps Fundamentals",
+      { issuer: "Tecmilenio", name: "Fundamentos de DevOps", date: "Jun 2026" },
+      { issuer: "Tecmilenio", name: "Desarrollo Full Stack", date: "Jun 2026" },
+      { issuer: "AWS Academy", name: "Cloud Operations", date: "Apr 2026" },
+      { issuer: "Cisco", name: "Networking Basics", date: "Feb 2026" },
+      { issuer: "Tecmilenio", name: "Bases de Datos", date: "Oct 2025" },
+      { issuer: "AWS Academy", name: "Cloud Foundations", date: "Sep 2024" },
+      { issuer: "Cisco", name: "Python Essentials 1", date: "Sep 2024" },
     ],
   },
   es: {
     name: "Arturo Montes",
     title: "Ingeniero Backend y DevOps",
+    summary: "Junior · Híbrido en Monterrey, Nuevo León",
+    pitch: "Ingeniería backend y de plataforma, con autonomía total para diseñar y operar servicios en producción.",
     labels: {
       phone: "Teléfono",
       email: "Correo",
       website: "Web",
+      github: "GitHub",
       location: "Ubicación",
       skills: "Habilidades",
       languages: "Idiomas",
@@ -199,18 +181,21 @@ export const cvData = {
       phone: "+52 81 2446 4219",
       email: "artumontg@gmail.com",
       website: "artumont.online",
+      github: "github.com/artumont",
       location: "Nuevo León, México",
     },
     skills: [
-      "Desarrollo Backend",
-      "DevOps e Infraestructura",
-      "Sistemas Distribuidos",
-      "Gestión de Bases de Datos",
-      "Pipelines CI/CD",
-      "Orquestación de Contenedores",
-      "Infraestructura como Código",
-      "Programación Orientada a Objetos",
-      "Diseño de APIs REST",
+      { family: "Backend y APIs", items: "Python · FastAPI · Go · Diseño de APIs REST · Sistemas Distribuidos (microservicios)" },
+      { family: "Datos y almacenamiento", items: "PostgreSQL · Redis · MinIO" },
+      {
+        family: "Infraestructura",
+        items: "Docker · Kubernetes (K8s) · Terraform · Ansible · Infraestructura como Código (IaC)",
+      },
+      { family: "Observabilidad", items: "Prometheus · Grafana · Loki" },
+      {
+        family: "CI/CD y seguridad",
+        items: "CI/CD (integración y entrega continuas) · JWT · RBAC",
+      },
     ],
     languages: [
       { name: "Inglés", level: "C2 Competente" },
@@ -225,19 +210,19 @@ export const cvData = {
         highlights: [
           {
             label: "Desarrollo y Arquitectura",
-            text: "Diseñé arquitectura central de SiaERP, abarcando clientes, proyectos, cotizaciones, facturas y pagos, gastos, inventario, flujos documentales y analítica mediante servicios FastAPI independientes.",
+            text: "Construcción de SiaERP: servicios FastAPI que cubren clientes, proyectos, cotizaciones, facturas y pagos, gastos, inventario, flujos documentales y analítica para ~15–20 usuarios internos.",
           },
           {
             label: "Infraestructura y DevOps",
-            text: "Automatiqué provisionamiento de LXC en Proxmox con Terraform y configuré hosts mediante playbooks Ansible para despliegue de stacks Docker, cubriendo inventario multi-ambiente (dev/staging/prod) con secretos cifrados por Vault.",
+            text: "Despliegue de stacks Docker asegurados con Vault en dev/staging/prod, instrumentados con Prometheus y Grafana para métricas y Loki para logs, y reducción del aprovisionamiento desde cero de LXC en Proxmox de ~1 hora a ~10 minutos con Terraform y Ansible.",
           },
           {
             label: "Datos y Seguridad",
-            text: "Modelé bases de datos relacionales complejas en PostgreSQL y aseguré plataforma usando autenticación JWT y control de acceso basado en roles (RBAC).",
+            text: "Modelado de la capa de datos relacional como una base de datos por servicio dentro de una sola instancia de PostgreSQL, asegurada con autenticación JWT y control de acceso basado en roles (RBAC).",
           },
           {
             label: "Automatización",
-            text: "Optimicé flujos operativos críticos mediante generación automática de facturas y órdenes de compra, además de gestión de almacenamiento con MinIO.",
+            text: "Entrega de MinIO como el almacén único de archivos de la plataforma (compatible con S3), junto con el flujo automatizado de facturas y órdenes de compra de punta a punta.",
           },
         ],
       },
@@ -246,66 +231,54 @@ export const cvData = {
       {
         name: "SiaERP",
         description:
-          "Plataforma empresarial para gestión de clientes y proyectos, cotizaciones, facturas y pagos, gastos, inventario, generación documental y analítica. Siete microservicios de dominio se comunican mediante eventos Redis y se despliegan de forma independiente con CI/CD basado en Docker.",
+          "Plataforma empresarial que cubre clientes, proyectos, cotizaciones, facturas y pagos, gastos, inventario, flujos documentales y analítica como servicios FastAPI de dominio.",
         stack:
           "Python, FastAPI, PostgreSQL, Redis, S3, Docker, Terraform, Ansible",
         duration: "Nov 2025 - Actualidad",
         link: null,
       },
       {
-        name: "GitHotswap",
-        description:
-          "CLI para crear, editar, listar y cambiar identidades Git sin modificar .gitconfig manualmente. Diseñada para aislar perfiles laborales y personales.",
-        stack: "Go, CLI",
-        duration: "Mar 2025 - Abr 2025",
-        link: "https://github.com/artumont/GitHotswap",
-      },
-      {
-        name: "ConcurrentChatSystem",
-        description:
-          "Aplicación de chat en tiempo real con salas concurrentes, backend Phoenix Channels/WebSockets y cliente Next.js. Creada para explorar concurrencia y modelo de actores en Elixir.",
-        stack: "Elixir, Phoenix, Next.js",
-        duration: "Mar 2025",
-        link: "https://github.com/artumont/ConcurrentChatSystem",
-      },
-      {
-        name: "EcommerceDocker",
-        description:
-          "API REST con MongoDB, Docker Compose, health checks y manifiestos Kubernetes para escalado y balanceo de carga. GitHub Actions automatiza builds de imágenes.",
-        stack: "Node.js, MongoDB, Docker, Kubernetes",
-        duration: "Mar 2025",
-        link: "https://github.com/artumont/EcommerceDocker",
-      },
-      {
         name: "DotSlashStream",
         description:
-          "Plataforma de streaming por torrents con múltiples indexadores, API en Go, colas Redis, metadatos PostgreSQL y almacenamiento de objetos en MinIO.",
+          "Plataforma de streaming por torrents con API en Go, colas Redis, metadatos PostgreSQL y almacenamiento MinIO.",
         stack: "Go, Redis, PostgreSQL, MinIO",
         duration: "Jul 2025 - Actualidad",
         link: "https://github.com/artumont/dotslashstream",
       },
       {
-        name: "altur-vconstruct",
+        name: "EcommerceDocker",
         description:
-          "Sistema de detección de voz sintética en llamadas telefónicas en tiempo real. Usa backbone WavLM-large con clasificador MLP e inferencia ONNX, logrando 99.5% de precisión y ~0.5s de latencia. Construido para HackMTY 2026.",
-        stack: "Python, FastAPI, WavLM, ONNX, Docker, Next.js",
-        duration: "Sep 2026",
-        link: "https://github.com/artumont/altur-vconstruct",
+          "API REST con Docker Compose, health checks y manifiestos Kubernetes (K8s); CI con GitHub Actions.",
+        stack: "Node.js, MongoDB, Docker, Kubernetes (K8s)",
+        duration: "Mar 2025",
+        link: "https://github.com/artumont/EcommerceDocker",
+      },
+      {
+        name: "ConcurrentChatSystem",
+        description:
+          "Chat en tiempo real con salas concurrentes y backend Phoenix Channels/WebSockets.",
+        stack: "Elixir, Phoenix, Next.js",
+        duration: "Mar 2025",
+        link: "https://github.com/artumont/ConcurrentChatSystem",
       },
     ],
     education: [
       {
         institution: "Universidad Tecmilenio San Nicolás",
         location: "Monterrey, Nuevo León",
-        duration: "Ago 2024 - Actualidad",
+        duration: "Aug 2024 - Actualidad (5º de 8 semestres)",
         program: "Ingeniería en Desarrollo de Software",
       },
     ],
+    // Orden cronologico descendente (mas reciente primero), identico en en/es.
     certifications: [
-      "AWS Academy Graduate - Cloud Foundations",
-      "AWS Academy Graduate - Cloud Operations",
-      "Cisco Python Essentials 1",
-      "Fundamentos de DevOps - Tecmilenio",
+      { issuer: "Tecmilenio", name: "Fundamentos de DevOps", date: "Jun 2026" },
+      { issuer: "Tecmilenio", name: "Desarrollo Full Stack", date: "Jun 2026" },
+      { issuer: "AWS Academy", name: "Cloud Operations", date: "Apr 2026" },
+      { issuer: "Cisco", name: "Networking Basics", date: "Feb 2026" },
+      { issuer: "Tecmilenio", name: "Bases de Datos", date: "Oct 2025" },
+      { issuer: "AWS Academy", name: "Cloud Foundations", date: "Sep 2024" },
+      { issuer: "Cisco", name: "Python Essentials 1", date: "Sep 2024" },
     ],
   },
 } as const;

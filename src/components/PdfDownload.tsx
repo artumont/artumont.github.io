@@ -6,8 +6,8 @@ import CvPdf from './CvPdf';
 import type { CvLanguage } from '@/data/cv-data';
 
 const languages: { code: CvLanguage; label: string; fileName: string }[] = [
-    { code: 'en', label: 'English', fileName: 'arturo-montes-cv-en.pdf' },
-    { code: 'es', label: 'Español', fileName: 'arturo-montes-cv-es.pdf' },
+    { code: 'en', label: 'English', fileName: 'Arturo-Montes-Backend-DevOps-Engineer-EN.pdf' },
+    { code: 'es', label: 'Español', fileName: 'Arturo-Montes-Backend-DevOps-Engineer-ES.pdf' },
 ];
 
 export default function PdfDownload() {

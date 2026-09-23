@@ -4,7 +4,6 @@ import {
     Circle,
     Document,
     Font,
-    Image,
     Link,
     Page,
     Path,
@@ -29,136 +28,97 @@ Font.registerHyphenationCallback(word => [word]);
 
 const PAGE_WIDTH = 595.28;
 const PAGE_HEIGHT = 841.89;
-const SIDEBAR_WIDTH = 260;
+const PAGE_PADDING_X = 42;
+const CONTACT_ICON_COLOR = '#ffffff';
+
+// Suelo tipografico: cuerpo y metadatos nunca por debajo de 9pt, bullets de rol y
+// proyectos nunca por debajo de 10pt (ver .pi/cv/rubric.md seccion 3.7).
+const BODY_FONT_SIZE = 9.5;
+const META_FONT_SIZE = 9;
+const BULLET_FONT_SIZE = 10;
 
 const styles = StyleSheet.create({
+    // Todo el documento es una sola columna en flujo normal: sin position absolute,
+    // sin columnas laterales, para que el orden de lectura del parser sea el visual.
     page: {
-        position: 'relative',
-        width: PAGE_WIDTH,
-        minWidth: PAGE_WIDTH,
-        maxWidth: PAGE_WIDTH,
-        height: PAGE_HEIGHT,
-        minHeight: PAGE_HEIGHT,
-        maxHeight: PAGE_HEIGHT,
         fontFamily: activeFont.family,
-        fontSize: 9,
+        fontSize: BODY_FONT_SIZE,
         color: '#111111',
         backgroundColor: '#ffffff',
+        paddingBottom: 14,
     },
-    sidebar: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: SIDEBAR_WIDTH,
-        height: PAGE_HEIGHT,
-        paddingTop: 36,
-        paddingHorizontal: 30,
-        paddingBottom: 24,
+    header: {
         color: '#ffffff',
         backgroundColor: '#000000',
+        paddingTop: 12,
+        paddingHorizontal: PAGE_PADDING_X,
+        paddingBottom: 9,
     },
     main: {
-        marginLeft: SIDEBAR_WIDTH,
-        width: PAGE_WIDTH - SIDEBAR_WIDTH,
-        paddingTop: 9,
-        paddingLeft: 7,
-        paddingRight: 0,
-        paddingBottom: 12,
-    },
-    watermark: {
-        position: 'absolute',
-        right: 0,
-        bottom: 0,
-        height: 14,
-        flexDirection: 'row',
-        alignItems: 'center',
-        opacity: 0.82,
-    },
-    watermarkText: {
-        fontSize: 7.5,
-        fontStyle: 'italic',
-        color: '#363636',
-        marginRight: 4,
-    },
-    watermarkIcon: {
-        width: 12,
-        height: 12,
-        marginRight: 5,
-        objectFit: 'contain',
-    },
-    watermarkEdge: {
-        width: 1,
-        height: 14,
-        backgroundColor: '#363636',
+        paddingTop: 8,
+        paddingHorizontal: PAGE_PADDING_X,
     },
     name: {
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: 'bold',
-        marginBottom: 4,
+        color: '#ffffff',
     },
     title: {
-        fontSize: 9,
-        color: '#d0d0d0',
-        marginBottom: 20,
+        fontSize: 10.5,
+        color: '#d9d9d9',
+        marginTop: 2,
     },
-    contactRow: {
+    summary: {
+        fontSize: BODY_FONT_SIZE,
+        lineHeight: 1.3,
+        color: '#ebebeb',
+    },
+    contactGrid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        marginTop: 6,
+    },
+    contactItem: {
         flexDirection: 'row',
         alignItems: 'center',
-        minHeight: 24,
-        marginBottom: 6,
+        marginRight: 15,
     },
     contactIcon: {
-        width: 24,
-        marginRight: 10,
+        width: 15,
+        marginRight: 4,
         alignItems: 'center',
     },
     contactText: {
-        fontSize: 10,
-        color: '#eeeeee',
+        fontSize: BODY_FONT_SIZE,
+        color: '#ffffff',
     },
-    sidebarHeading: {
-        fontSize: 12.5,
-        fontWeight: 'normal',
-        textAlign: 'center',
-        marginTop: 25,
-        marginBottom: 12,
+    contactLink: {
+        fontSize: BODY_FONT_SIZE,
+        color: '#ffffff',
+        textDecoration: 'underline',
     },
-    skillItem: {
-        fontSize: 9.6,
-        fontWeight: 'bold',
-        marginBottom: 8,
-        paddingLeft: 8,
-    },
-    sidebarItem: {
-        fontSize: 9.5,
+    // Ritmo vertical: cada seccion lleva el mismo espacio despues.
+    section: {
         marginBottom: 7,
-        paddingLeft: 8,
-    },
-    sidebarBottom: {
-        position: 'absolute',
-        left: 30,
-        right: 30,
-        bottom: 32,
     },
     sectionHeader: {
-        marginBottom: 7,
+        marginBottom: 3,
     },
     sectionTitle: {
-        fontSize: 19,
-        fontWeight: 'normal',
-        textAlign: 'right',
-        paddingRight: 9,
-        marginBottom: 2,
+        fontSize: 12,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        marginBottom: 1,
     },
     sectionRule: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     sectionNode: {
-        width: 8,
-        height: 8,
-        marginLeft: 63,
-        borderRadius: 4,
+        width: 6,
+        height: 6,
+        borderRadius: 3,
         backgroundColor: '#666666',
     },
     sectionLine: {
@@ -166,124 +126,155 @@ const styles = StyleSheet.create({
         height: 1,
         backgroundColor: '#111111',
     },
-    sectionContent: {
-        paddingLeft: 5,
-        paddingRight: 7,
+    // Fila con etiqueta a la izquierda y metadato alineado a la derecha.
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
     },
-    workCompany: {
-        fontSize: 10,
-        fontWeight: 'bold',
-        marginBottom: 1,
-    },
-    workMeta: {
-        fontSize: 8.5,
+    rowMeta: {
+        flexShrink: 0,
+        fontSize: META_FONT_SIZE,
         fontStyle: 'italic',
         color: '#444444',
-        marginBottom: 1,
+        marginLeft: 12,
+    },
+    skillItem: {
+        fontSize: BODY_FONT_SIZE,
+        lineHeight: 1.25,
+        marginBottom: 1.5,
+        paddingLeft: 8,
+    },
+    skillFamily: {
+        fontWeight: 'bold',
+    },
+    languageGrid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    languageItem: {
+        width: '50%',
+        fontSize: BODY_FONT_SIZE,
+        lineHeight: 1.25,
+        marginBottom: 1.5,
+        paddingLeft: 8,
+    },
+    workCompany: {
+        flexShrink: 1,
+        fontSize: 10.5,
+        fontWeight: 'bold',
     },
     workRole: {
-        fontSize: 8.7,
+        flexShrink: 1,
+        fontSize: META_FONT_SIZE,
         fontStyle: 'italic',
         color: '#333333',
-        marginBottom: 6,
     },
     highlight: {
-        fontSize: 8.7,
-        lineHeight: 1.28,
-        marginBottom: 8,
+        fontSize: BULLET_FONT_SIZE,
+        lineHeight: 1.26,
+        marginTop: 3,
         paddingLeft: 9,
     },
     highlightLabel: {
         fontWeight: 'bold',
     },
     projectItem: {
-        marginBottom: 7,
+        marginBottom: 4,
     },
     projectName: {
-        fontSize: 9.5,
+        flexShrink: 1,
+        fontSize: 10.5,
         fontWeight: 'bold',
-        marginBottom: 1,
-    },
-    projectDescription: {
-        fontSize: 8.3,
-        lineHeight: 1.22,
-        color: '#222222',
-        marginBottom: 1,
-    },
-    projectMeta: {
-        fontSize: 8,
-        fontStyle: 'italic',
-        color: '#444444',
-        marginBottom: 1,
     },
     projectLink: {
-        fontSize: 8,
+        flexShrink: 0,
+        fontSize: META_FONT_SIZE,
         fontStyle: 'italic',
-        color: '#4d70ff',
+        color: '#111111',
         textDecoration: 'underline',
+        marginLeft: 12,
     },
-    educationInstitution: {
-        fontSize: 10,
-        fontWeight: 'bold',
-        marginBottom: 1,
+    projectDescription: {
+        fontSize: BULLET_FONT_SIZE,
+        lineHeight: 1.26,
+        color: '#222222',
     },
-    educationMeta: {
-        fontSize: 8.5,
+    projectMeta: {
+        fontSize: META_FONT_SIZE,
         fontStyle: 'italic',
         color: '#444444',
-        marginBottom: 1,
-    },
-    educationProgram: {
-        fontSize: 8.7,
-        fontStyle: 'italic',
+        marginTop: 1,
     },
     certificationItem: {
-        fontSize: 8.5,
-        lineHeight: 1.2,
-        marginBottom: 4,
+        fontSize: META_FONT_SIZE,
+        lineHeight: 1.15,
+        marginBottom: 1.5,
         paddingLeft: 8,
+    },
+    certificationName: {
+        fontWeight: 'bold',
+    },
+    educationInstitution: {
+        flexShrink: 1,
+        fontSize: 10.5,
+        fontWeight: 'bold',
+    },
+    educationProgram: {
+        flexShrink: 1,
+        fontSize: META_FONT_SIZE,
+        fontStyle: 'italic',
+        color: '#333333',
     },
 });
 
-function ContactIcon({ type }: { type: 'phone' | 'email' | 'website' | 'location' }) {
+type ContactType = 'phone' | 'email' | 'website' | 'github' | 'location';
+
+function ContactIcon({ type }: { type: ContactType }) {
     if (type === 'phone') {
         return (
-            <Svg viewBox="0 0 24 24" width={17} height={17}>
-                <Path d="M7 2h10v20H7z" fill="none" stroke="#ffffff" strokeWidth={1.2} />
-                <Path d="M10 4h4M11 20h2" fill="none" stroke="#ffffff" strokeWidth={1} />
+            <Svg viewBox="0 0 24 24" width={14} height={14}>
+                <Path d="M7 2h10v20H7z" fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1.2} />
+                <Path d="M10 4h4M11 20h2" fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1} />
             </Svg>
         );
     }
 
     if (type === 'email') {
         return (
-            <Svg viewBox="0 0 24 24" width={18} height={18}>
-                <Rect x={2} y={5} width={20} height={14} fill="none" stroke="#ffffff" strokeWidth={1.2} />
-                <Path d="M2 6l10 8 10-8" fill="none" stroke="#ffffff" strokeWidth={1.2} />
+            <Svg viewBox="0 0 24 24" width={15} height={15}>
+                <Rect x={2} y={5} width={20} height={14} fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1.2} />
+                <Path d="M2 6l10 8 10-8" fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1.2} />
+            </Svg>
+        );
+    }
+
+    if (type === 'github') {
+        return (
+            <Svg viewBox="0 0 16 16" width={13} height={13}>
+                <Path
+                    fill={CONTACT_ICON_COLOR}
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                />
             </Svg>
         );
     }
 
     if (type === 'website') {
         return (
-            <Svg viewBox="0 0 24 24" width={19} height={19}>
-                <Circle cx={12} cy={12} r={10} fill="none" stroke="#ffffff" strokeWidth={1.2} />
-                <Path d="M2 12h20M12 2c3 3 4 6 4 10s-1 7-4 10M12 2c-3 3-4 6-4 10s1 7 4 10" fill="none" stroke="#ffffff" strokeWidth={1} />
+            <Svg viewBox="0 0 24 24" width={15} height={15}>
+                <Circle cx={12} cy={12} r={10} fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1.2} />
+                <Path d="M2 12h20M12 2c3 3 4 6 4 10s-1 7-4 10M12 2c-3 3-4 6-4 10s1 7 4 10" fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1} />
             </Svg>
         );
     }
 
     return (
-        <Svg viewBox="0 0 24 24" width={19} height={19}>
-            <Path d="M12 22s7-7 7-13a7 7 0 10-14 0c0 6 7 13 7 13z" fill="none" stroke="#ffffff" strokeWidth={1.2} />
-            <Circle cx={12} cy={9} r={2.3} fill="none" stroke="#ffffff" strokeWidth={1.2} />
+        <Svg viewBox="0 0 24 24" width={15} height={15}>
+            <Path d="M12 22s7-7 7-13a7 7 0 10-14 0c0 6 7 13 7 13z" fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1.2} />
+            <Circle cx={12} cy={9} r={2.3} fill="none" stroke={CONTACT_ICON_COLOR} strokeWidth={1.2} />
         </Svg>
     );
-}
-
-function getDailyQuote<T>(quotes: readonly T[]) {
-    const mondayBasedDay = (new Date().getDay() + 6) % 7;
-    return quotes[mondayBasedDay % quotes.length];
 }
 
 function SectionHeader({ children }: { children: string }) {
@@ -300,56 +291,62 @@ function SectionHeader({ children }: { children: string }) {
 
 export default function CvPdf({ language = 'en' }: { language?: CvLanguage }) {
     const data = cvData[language];
-    const dailyQuote = getDailyQuote(cvAppearance.watermark.quotes);
     const contacts = [
-        { type: 'phone' as const, value: data.contact.phone },
-        { type: 'email' as const, value: data.contact.email },
-        { type: 'website' as const, value: data.contact.website },
-        { type: 'location' as const, value: data.contact.location },
+        { type: 'email' as const, value: data.contact.email, href: `mailto:${data.contact.email}` },
+        { type: 'phone' as const, value: data.contact.phone, href: null },
+        { type: 'github' as const, value: data.contact.github, href: `https://${data.contact.github}` },
+        { type: 'website' as const, value: data.contact.website, href: `https://${data.contact.website}` },
+        { type: 'location' as const, value: data.contact.location, href: null },
     ];
 
     return (
         <Document title={`${data.name} - CV (${language.toUpperCase()})`} author={data.name} language={language}>
-            <Page size={{ width: PAGE_WIDTH, height: PAGE_HEIGHT }} style={styles.page} wrap={false}>
-                {cvAppearance.watermark.enabled && (
-                    <View style={styles.watermark}>
-                        <Text style={styles.watermarkText}>{dailyQuote.text}</Text>
-                        <Image style={styles.watermarkIcon} src={dailyQuote.icon} />
-                    </View>
-                )}
-
-                <View style={styles.sidebar}>
+            <Page size={{ width: PAGE_WIDTH, height: PAGE_HEIGHT }} style={styles.page}>
+                <View style={styles.header}>
                     <Text style={styles.name}>{data.name}</Text>
                     <Text style={styles.title}>{data.title}</Text>
-
-                    {contacts.map(contact => (
-                        <View key={contact.type} style={styles.contactRow}>
-                            <View style={styles.contactIcon}><ContactIcon type={contact.type} /></View>
-                            <Text style={styles.contactText}>{contact.value}</Text>
-                        </View>
-                    ))}
-
-                    <Text style={styles.sidebarHeading}>{data.labels.skills}</Text>
-                    {data.skills.map(skill => (
-                        <Text key={skill} style={styles.skillItem}>•  {skill}</Text>
-                    ))}
-
-                    <View style={styles.sidebarBottom}>
-                        <Text style={styles.sidebarHeading}>{data.labels.languages}</Text>
-                        {data.languages.map(lang => (
-                            <Text key={lang.name} style={styles.sidebarItem}>•  {lang.name} - {lang.level}</Text>
+                    <Text style={styles.summary}>{data.summary}</Text>
+                    <Text style={styles.summary}>{data.pitch}</Text>
+                    <View style={styles.contactGrid}>
+                        {contacts.map(contact => (
+                            <View key={contact.type} style={styles.contactItem}>
+                                <View style={styles.contactIcon}>
+                                    <ContactIcon type={contact.type} />
+                                </View>
+                                {contact.href ? (
+                                    <Link style={styles.contactLink} src={contact.href}>
+                                        {contact.value}
+                                    </Link>
+                                ) : (
+                                    <Text style={styles.contactText}>{contact.value}</Text>
+                                )}
+                            </View>
                         ))}
                     </View>
                 </View>
 
                 <View style={styles.main}>
-                    <SectionHeader>{data.labels.experience}</SectionHeader>
-                    <View style={styles.sectionContent}>
+                    <View style={styles.section}>
+                        <SectionHeader>{data.labels.skills}</SectionHeader>
+                        {data.skills.map(skill => (
+                            <Text key={skill.family} style={styles.skillItem}>
+                                <Text style={styles.skillFamily}>•  {skill.family}: </Text>{skill.items}
+                            </Text>
+                        ))}
+                    </View>
+
+                    <View style={styles.section}>
+                        <SectionHeader>{data.labels.experience}</SectionHeader>
                         {data.workExperience.map(work => (
                             <View key={work.company}>
-                                <Text style={styles.workCompany}>{work.company}</Text>
-                                <Text style={styles.workMeta}>{work.location} | {work.duration}</Text>
-                                <Text style={styles.workRole}>{work.role}</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.workCompany}>{work.company}</Text>
+                                    <Text style={styles.rowMeta}>{work.duration}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.workRole}>{work.role}</Text>
+                                    <Text style={styles.rowMeta}>{work.location}</Text>
+                                </View>
                                 {work.highlights.map(highlight => (
                                     <Text key={highlight.label} style={styles.highlight}>
                                         <Text style={styles.highlightLabel}>•  {highlight.label}: </Text>{highlight.text}
@@ -359,36 +356,59 @@ export default function CvPdf({ language = 'en' }: { language?: CvLanguage }) {
                         ))}
                     </View>
 
-                    <SectionHeader>{data.labels.projects}</SectionHeader>
-                    <View style={styles.sectionContent}>
+                    <View style={styles.section}>
+                        <SectionHeader>{data.labels.projects}</SectionHeader>
                         {data.projects.map(project => (
-                            <View key={project.name} style={styles.projectItem}>
-                                <Text style={styles.projectName}>{project.name}</Text>
+                            <View key={project.name} style={styles.projectItem} wrap={false}>
+                                <View style={styles.row}>
+                                    <Text style={styles.projectName}>{project.name}</Text>
+                                    {project.link && (
+                                        <Link style={styles.projectLink} src={project.link}>
+                                            {project.link.replace('https://', '')}
+                                        </Link>
+                                    )}
+                                </View>
                                 <Text style={styles.projectDescription}>{project.description}</Text>
                                 <Text style={styles.projectMeta}>{project.stack} | {project.duration}</Text>
-                                {project.link && (
-                                    <Link style={styles.projectLink} src={project.link}>{project.link.replace('https://', '')}</Link>
-                                )}
                             </View>
                         ))}
                     </View>
 
-                    <SectionHeader>{data.labels.certifications}</SectionHeader>
-                    <View style={styles.sectionContent}>
+                    <View style={styles.section}>
+                        <SectionHeader>{data.labels.certifications}</SectionHeader>
                         {data.certifications.map(certification => (
-                            <Text key={certification} style={styles.certificationItem}>•  {certification}</Text>
+                            <Text
+                                key={`${certification.issuer}-${certification.name}`}
+                                style={styles.certificationItem}
+                            >
+                                <Text style={styles.certificationName}>•  {certification.name}</Text>{` — ${certification.issuer} | ${certification.date}`}
+                            </Text>
                         ))}
                     </View>
 
-                    <SectionHeader>{data.labels.education}</SectionHeader>
-                    <View style={styles.sectionContent}>
+                    <View style={styles.section}>
+                        <SectionHeader>{data.labels.education}</SectionHeader>
                         {data.education.map(education => (
                             <View key={education.institution}>
-                                <Text style={styles.educationInstitution}>{education.institution}</Text>
-                                <Text style={styles.educationMeta}>{education.location} | {education.duration}</Text>
-                                <Text style={styles.educationProgram}>{education.program}</Text>
+                                <View style={styles.row}>
+                                    <Text style={styles.educationInstitution}>{education.institution}</Text>
+                                    <Text style={styles.rowMeta}>{education.duration}</Text>
+                                </View>
+                                <View style={styles.row}>
+                                    <Text style={styles.educationProgram}>{education.program}</Text>
+                                    <Text style={styles.rowMeta}>{education.location}</Text>
+                                </View>
                             </View>
                         ))}
+                    </View>
+
+                    <View style={styles.section}>
+                        <SectionHeader>{data.labels.languages}</SectionHeader>
+                        <View style={styles.languageGrid}>
+                            {data.languages.map(lang => (
+                                <Text key={lang.name} style={styles.languageItem}>•  {lang.name} — {lang.level}</Text>
+                            ))}
+                        </View>
                     </View>
                 </View>
             </Page>
