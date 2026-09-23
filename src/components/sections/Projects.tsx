@@ -5,8 +5,8 @@ const projects = [
     {
         name: "SiaERP",
         description:
-            "Enterprise ERP covering clients, projects, quotations, invoices and payments, expenses, inventory, document generation, and analytics through 7 domain microservices.",
-        why: "Built to replace fragmented operational workflows at Saisa. Redis events, database-per-service isolation, and a custom Proxmox-aware orchestrator support independent deployments and rollback.",
+            "Enterprise ERP covering clients, projects, quotations, invoices and payments, expenses, inventory, document generation, and analytics.",
+        why: "Built to replace fragmented operational workflows at Saisa. Redis events, a single PostgreSQL instance with a database per service, and a custom Proxmox-aware orchestrator support independent deployments and rollback.",
         stack: [
             "Python",
             "FastAPI",
@@ -97,7 +97,7 @@ export default function Projects() {
         <section className="w-full" id="projects">
             <div className="relative h-full w-full bg-primary px-5 py-12 lg:px-32">
                 <div className="container mb-10">
-                    <h1 className="text-4xl font-jetbrains mb-1"> Projects </h1>
+                    <h2 className="text-4xl font-jetbrains mb-1"> Projects </h2>
                     <div className="h-1 w-40 bg-gradient-to-r from-accent to-accent/30"></div>
                 </div>
 
@@ -177,6 +177,11 @@ export default function Projects() {
                                             Blog
                                         </span>
                                     </motion.a>
+                                )}
+                                {!project.github && !project.link && !project.blog && (
+                                    <span className="font-inter text-sm text-accent/70">
+                                        Internal — private build
+                                    </span>
                                 )}
                             </div>
                         </motion.div>

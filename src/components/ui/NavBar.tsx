@@ -136,14 +136,14 @@ export default function NavBar() {
 
     return (
         <nav
-            className={`fixed inset-x-0 top-0 justify-between items-center px-6 md:px-26 lg:px-32 py-4 text-white font-inert z-50 transition-all duration-300 ${shouldShowBackdrop ? 'bg-primary/50 backdrop-blur-md shadow-lg' : ''}`}
+            className={`fixed inset-x-0 top-0 justify-between items-center px-6 md:px-28 lg:px-32 py-4 text-white font-inter z-50 transition-all duration-300 ${shouldShowBackdrop ? 'bg-primary/50 backdrop-blur-md shadow-lg' : ''}`}
             role="navigation"
             aria-label="Main navigation"
         >
             <div className='w-full h-full flex justify-between'>
-                <h1 className="text-2xl font-jetbrains font-bold cursor-pointer hover:text-zinc-300 transition-colors">
-                    <a href="#home">Artu</a>
-                </h1>
+                <h2 className="text-2xl font-jetbrains font-bold cursor-pointer hover:text-zinc-300 transition-colors">
+                    <a href="#home">Arturo Montes</a>
+                </h2>
                 {isMobile ? <MobileMenu /> : <DesktopMenu />}
             </div>
             {isMobile && <MobileDropdown />}

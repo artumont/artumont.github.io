@@ -25,7 +25,7 @@ const profileButtons = [
     icon: (
       <Image
         src={"/logos/leetcode.svg"}
-        alt=""
+        alt="Leetcode"
         width={25}
         height={25}
         className={ICON_CLASS}
@@ -89,7 +89,7 @@ const workExperience = [
     role: "Backend & DevOps Engineer",
     duration: "Nov 2025 - Present",
     description:
-      "Building SiaERP — a microservices-based ERP platform with 7 business services, event-driven architecture (Redis pub/sub), database-per-service pattern (PostgreSQL), and a custom deployment orchestrator with Proxmox snapshot rollback. Previously designed and built the core ERP system with FastAPI, Docker/Nginx orchestration, GitHub Actions CI/CD, JWT auth with RBAC, and automated PDF generation with MinIO storage.",
+      "Building SiaERP — a microservices-based ERP platform with event-driven architecture (Redis pub/sub), a single PostgreSQL instance with a database per service, and a custom deployment orchestrator with Proxmox snapshot rollback. Previously designed and built the core ERP system with FastAPI, Docker/Nginx orchestration, GitHub Actions CI/CD, JWT auth with RBAC, and automated PDF generation with MinIO storage.",
     logo: "/logos/saisa.png",
   },
 ];
@@ -100,7 +100,6 @@ const certifications = [
   { issuer: "AWS Academy", name: "Cloud Operations", date: "Apr 2026" },
   { issuer: "Cisco", name: "Python Essentials 1", date: "Sep 2024" },
   { issuer: "Cisco", name: "Networking Basics", date: "Feb 2026" },
-  { issuer: "IBM", name: "Data Visualization with R", date: "Dec 2024" },
   { issuer: "Tecmilenio", name: "Fundamentos de DevOps", date: "Jun 2026" },
   { issuer: "Tecmilenio", name: "Desarrollo Full Stack", date: "Jun 2026" },
   { issuer: "Tecmilenio", name: "Bases de Datos", date: "Oct 2025" },
@@ -133,7 +132,7 @@ export default function About() {
     <div className="flex flex-col items-center lg:items-start">
       <div className="flex flex-row">
         {icon}
-        <h1 className="text-lg font-jetbrains mb-1 ml-2">{title}</h1>
+        <h3 className="text-lg font-jetbrains mb-1 ml-2">{title}</h3>
       </div>
       <div className="flex flex-wrap justify-center lg:justify-normal gap-2">
         {items.map((tech, i) => (
@@ -147,7 +146,7 @@ export default function About() {
     <section className="w-full bg-primary" id="about">
       <div className="relative h-full w-full bg-primary px-5 py-12 lg:px-32">
         <div className="container">
-          <h1 className="text-4xl font-jetbrains mb-1"> About Me </h1>
+          <h2 className="text-4xl font-jetbrains mb-1"> About Me </h2>
           <div className="h-1 w-40 bg-gradient-to-r from-accent to-accent/30"></div>
         </div>
 
@@ -167,21 +166,28 @@ export default function About() {
                 className="rounded-full border-4 border-accent/50 mb-2 lg:mb-0"
               />
               <div className="flex text-center lg:text-start flex-col lg:ml-5">
-                <h1 className="text-2xl font-jetbrains"> {profile.name} </h1>
-                <h2 className="text-lg font-jetbrains"> {profile.role} </h2>
+                <h3 className="text-2xl font-jetbrains"> {profile.name} </h3>
+                <h3 className="text-lg font-jetbrains"> {profile.role} </h3>
                 <div className="flex flex-row mt-1 justify-center lg:justify-normal">
-                  {profileButtons.map((button, index) => (
-                    <motion.button
+                    {profileButtons.map((button, index) => {
+                    const opensNewTab = !button.href.startsWith("mailto:");
+                    return (
+                    <motion.a
                       key={index}
+                      href={button.href}
+                      {...(opensNewTab
+                        ? ({ target: "_blank", rel: "noopener noreferrer" } as const)
+                        : {})}
+                      aria-label={button.name}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       transition={{ duration: 0.02 }}
                       className="rounded-full p-2 bg-black/80 mr-1"
-                      onClick={() => window.open(button.href, "_blank")}
                     >
                       {button.icon}
-                    </motion.button>
-                  ))}
+                    </motion.a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -205,9 +211,9 @@ export default function About() {
           </div>
 
           <div className="flex flex-col min-w-[47%] bg-secondary mt-10 rounded-lg p-5 items-center mx-5 lg:mx-0">
-            <h1 className="text-xl font-jetbrains mb-1 text-center">
+            <h3 className="text-xl font-jetbrains mb-1 text-center">
               Technical Expertise
-            </h1>
+            </h3>
             <div className="h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30"></div>
             <div className="flex flex-col h-full w-full mt-6 gap-6">
               <TechSection
@@ -236,9 +242,9 @@ export default function About() {
           className="flex flex-col lg:flex-row justify-center lg:justify-between"
         >
           <div className="flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0 w-full">
-            <h1 className="text-xl font-jetbrains mb-1 text-center">
+            <h3 className="text-xl font-jetbrains mb-1 text-center">
               Work Experience
-            </h1>
+            </h3>
             <div className="h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30"></div>
             <div className="flex flex-col h-full w-full mt-6">
               {workExperience.map((work, index) => (
@@ -254,11 +260,11 @@ export default function About() {
                     className="rounded-full border-4 border-accent/50 mb-2 lg:mb-0"
                   />
                   <div className="flex flex-col lg:ml-5 text-center lg:text-left">
-                    <h1 className="text-lg font-jetbrains"> {work.company} </h1>
-                    <h2 className="text-md font-jetbrains text-accent">
+                    <h3 className="text-lg font-jetbrains"> {work.company} </h3>
+                    <h3 className="text-md font-jetbrains text-accent">
                       {" "}
                       {work.role}{" "}
-                    </h2>
+                    </h3>
                     <h3 className="text-sm font-inter text-accent italic">
                       {" "}
                       {work.duration}{" "}
@@ -281,9 +287,9 @@ export default function About() {
           className="flex flex-col lg:flex-row justify-center lg:justify-between"
         >
           <div className="flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0 w-full">
-            <h1 className="text-xl font-jetbrains mb-1 text-center">
+            <h3 className="text-xl font-jetbrains mb-1 text-center">
               Certifications
-            </h1>
+            </h3>
             <div className="h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30"></div>
             <div className="flex flex-wrap justify-center gap-3 mt-6">
               {certifications.map((cert, i) => (

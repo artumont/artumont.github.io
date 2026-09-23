@@ -24,6 +24,9 @@ export default function Header() {
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 lg:mb-3 tracking-tight relative">
                         Backend & DevOps Engineer
                     </h1>
+                    <p className="text-lg lg:text-xl font-jetbrains text-center mx-auto mt-1">
+                        Arturo Montes — Backend & DevOps Engineer · Monterrey, Nuevo León (Hybrid)
+                    </p>
                     <TerminalText
                         text="Building scalable systems with Docker, Kubernetes, and CI/CD pipelines. Currently engineering ERP platforms at Saisa." 
                         className="text-lg lg:text-xl lg:max-w-[100%] mt-2 font-jetbrains text-center mx-auto" 
