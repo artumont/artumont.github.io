@@ -241,7 +241,7 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col lg:flex-row justify-center lg:justify-between"
         >
-          <div className="flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0 w-full">
+          <div className="flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0 lg:w-full">
             <h3 className="text-xl font-jetbrains mb-1 text-center">
               Work Experience
             </h3>
@@ -250,18 +250,21 @@ export default function About() {
               {workExperience.map((work, index) => (
                 <div
                   key={index}
-                  className="flex flex-col lg:flex-row items-center lg:items-start bg-terciary p-4 gap-1 m-1 rounded-lg"
+                  className="flex flex-col lg:flex-row items-center lg:items-start bg-terciary p-3 sm:p-4 gap-1 rounded-lg min-w-0"
                 >
                   <Image
                     src={work.logo}
                     alt={work.company}
                     width={60}
                     height={60}
-                    className="rounded-full border-4 border-accent/50 mb-2 lg:mb-0"
+                    className="rounded-full border-4 border-accent/50 mb-2 lg:mb-0 shrink-0"
                   />
-                  <div className="flex flex-col lg:ml-5 text-center lg:text-left">
-                    <h3 className="text-lg font-jetbrains"> {work.company} </h3>
-                    <h3 className="text-md font-jetbrains text-accent">
+                  <div className="flex flex-col lg:ml-5 text-center lg:text-left min-w-0">
+                    <h3 className="text-base sm:text-lg font-jetbrains break-words">
+                      {" "}
+                      {work.company}{" "}
+                    </h3>
+                    <h3 className="text-sm sm:text-md font-jetbrains text-accent break-words">
                       {" "}
                       {work.role}{" "}
                     </h3>
@@ -269,7 +272,7 @@ export default function About() {
                       {" "}
                       {work.duration}{" "}
                     </h3>
-                    <p className="text-md font-inter text-accent mt-2 text-justify">
+                    <p className="text-sm sm:text-md font-inter text-accent mt-2 text-left sm:text-justify">
                       {" "}
                       {work.description}{" "}
                     </p>
@@ -286,21 +289,23 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col lg:flex-row justify-center lg:justify-between"
         >
-          <div className="flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0 w-full">
+          <div className="flex flex-col bg-secondary mt-5 rounded-lg p-5 items-center mx-5 lg:mx-0 lg:w-full">
             <h3 className="text-xl font-jetbrains mb-1 text-center">
               Certifications
             </h3>
             <div className="h-1 w-32 lg:w-40 bg-gradient-to-r from-accent/50 to-accent/30"></div>
-            <div className="flex flex-wrap justify-center gap-3 mt-6">
+            <div className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-6">
               {certifications.map((cert, i) => (
                 <div
                   key={i}
-                  className="flex flex-col bg-terciary p-3 rounded-lg min-w-[200px]"
+                  className="flex flex-col bg-terciary p-3 rounded-lg min-w-0"
                 >
-                  <span className="text-sm font-jetbrains text-accent">
+                  <span className="text-sm font-jetbrains text-accent break-words">
                     {cert.issuer}
                   </span>
-                  <span className="text-sm font-inter">{cert.name}</span>
+                  <span className="text-sm font-inter break-words">
+                    {cert.name}
+                  </span>
                   <span className="text-xs font-inter text-accent/70">
                     {cert.date}
                   </span>
