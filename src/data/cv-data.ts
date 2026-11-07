@@ -116,14 +116,6 @@ export const cvData = {
         link: null,
       },
       {
-        name: "DotSlashStream",
-        description:
-          "Torrent streaming platform with a Go API, Redis queues, PostgreSQL metadata, and MinIO storage.",
-        stack: "Go, Redis, PostgreSQL, MinIO",
-        duration: "Jul 2025 - Present",
-        link: "https://github.com/artumont/dotslashstream",
-      },
-      {
         name: "EcommerceDocker",
         description:
           "REST API with Docker Compose, health checks, and Kubernetes (K8s) manifests; CI via GitHub Actions.",
@@ -236,14 +228,6 @@ export const cvData = {
           "Python, FastAPI, PostgreSQL, Redis, S3, Docker, Terraform, Ansible",
         duration: "Nov 2025 - Actualidad",
         link: null,
-      },
-      {
-        name: "DotSlashStream",
-        description:
-          "Plataforma de streaming por torrents con API en Go, colas Redis, metadatos PostgreSQL y almacenamiento MinIO.",
-        stack: "Go, Redis, PostgreSQL, MinIO",
-        duration: "Jul 2025 - Actualidad",
-        link: "https://github.com/artumont/dotslashstream",
       },
       {
         name: "EcommerceDocker",
